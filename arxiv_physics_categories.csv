@@ -1,0 +1,56 @@
+group,archive,id,name
+Astrophysics,astro-ph,astro-ph,Astrophysics
+Astrophysics,astro-ph,astro-ph.CO,Cosmology and Nongalactic Astrophysics
+Astrophysics,astro-ph,astro-ph.EP,Earth and Planetary Astrophysics
+Astrophysics,astro-ph,astro-ph.GA,Astrophysics of Galaxies
+Astrophysics,astro-ph,astro-ph.HE,High Energy Astrophysical Phenomena
+Astrophysics,astro-ph,astro-ph.IM,Instrumentation and Methods for Astrophysics
+Astrophysics,astro-ph,astro-ph.SR,Solar and Stellar Astrophysics
+Condensed Matter,cond-mat,cond-mat,Condensed Matter
+Condensed Matter,cond-mat,cond-mat.dis-nn,Disordered Systems and Neural Networks
+Condensed Matter,cond-mat,cond-mat.mes-hall,Mesoscale and Nanoscale Physics
+Condensed Matter,cond-mat,cond-mat.mtrl-sci,Materials Science
+Condensed Matter,cond-mat,cond-mat.other,Other Condensed Matter
+Condensed Matter,cond-mat,cond-mat.quant-gas,Quantum Gases
+Condensed Matter,cond-mat,cond-mat.soft,Soft Condensed Matter
+Condensed Matter,cond-mat,cond-mat.stat-mech,Statistical Mechanics
+Condensed Matter,cond-mat,cond-mat.str-el,Strongly Correlated Electrons
+Condensed Matter,cond-mat,cond-mat.supr-con,Superconductivity
+General Relativity and Quantum Cosmology,gr-qc,gr-qc,General Relativity and Quantum Cosmology
+High Energy Physics - Experiment,hep-ex,hep-ex,High Energy Physics - Experiment
+High Energy Physics - Lattice,hep-lat,hep-lat,High Energy Physics - Lattice
+High Energy Physics - Phenomenology,hep-ph,hep-ph,High Energy Physics - Phenomenology
+High Energy Physics - Theory,hep-th,hep-th,High Energy Physics - Theory
+Mathematical Physics,math-ph,math-ph,Mathematical Physics
+Nonlinear Sciences,nlin,nlin,Nonlinear Sciences
+Nonlinear Sciences,nlin,nlin.AO,Adaptation and Self-Organizing Systems
+Nonlinear Sciences,nlin,nlin.CD,Chaotic Dynamics
+Nonlinear Sciences,nlin,nlin.CG,Cellular Automata and Lattice Gases
+Nonlinear Sciences,nlin,nlin.PS,Pattern Formation and Solitons
+Nonlinear Sciences,nlin,nlin.SI,Exactly Solvable and Integrable Systems
+Nuclear Experiment,nucl-ex,nucl-ex,Nuclear Experiment
+Nuclear Theory,nucl-th,nucl-th,Nuclear Theory
+Physics,physics,physics,Physics
+Physics,physics,physics.acc-ph,Accelerator Physics
+Physics,physics,physics.ao-ph,Atmospheric and Oceanic Physics
+Physics,physics,physics.app-ph,Applied Physics
+Physics,physics,physics.atm-clus,Atomic and Molecular Clusters
+Physics,physics,physics.atom-ph,Atomic Physics
+Physics,physics,physics.bio-ph,Biological Physics
+Physics,physics,physics.chem-ph,Chemical Physics
+Physics,physics,physics.class-ph,Classical Physics
+Physics,physics,physics.comp-ph,Computational Physics
+Physics,physics,physics.data-an,"Data Analysis, Statistics and Probability"
+Physics,physics,physics.ed-ph,Physics Education
+Physics,physics,physics.flu-dyn,Fluid Dynamics
+Physics,physics,physics.gen-ph,General Physics
+Physics,physics,physics.geo-ph,Geophysics
+Physics,physics,physics.hist-ph,History and Philosophy of Physics
+Physics,physics,physics.ins-det,Instrumentation and Detectors
+Physics,physics,physics.med-ph,Medical Physics
+Physics,physics,physics.optics,Optics
+Physics,physics,physics.plasm-ph,Plasma Physics
+Physics,physics,physics.pop-ph,Popular Physics
+Physics,physics,physics.soc-ph,Physics and Society
+Physics,physics,physics.space-ph,Space Physics
+Quantum Physics,quant-ph,quant-ph,Quantum Physics
