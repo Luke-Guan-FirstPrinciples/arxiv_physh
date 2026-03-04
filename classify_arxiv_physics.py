@@ -15,6 +15,10 @@ Output table (default):
 The script is resumable by default:
 - it upserts by `paper_id`
 - it skips already-classified rows unless --force-reclassify is used
+
+Prediction mode:
+- thresholded multi-label for discipline + concept (default threshold: 0.85)
+- if no label passes threshold, fallback to top-1
 """
 
 from __future__ import annotations
@@ -196,7 +200,13 @@ def load_physics_ids(csv_path: Path) -> List[str]:
     return sorted(physics_ids)
 
 
-def resolve_device(preferred: str = "auto") -> str:
+def resolve_device(preferred: str = "gpu") -> str:
+    if preferred == "gpu":
+        if torch.cuda.is_available():
+            return "cuda"
+        if torch.backends.mps.is_available():
+            return "mps"
+        return "cpu"
     if preferred != "auto":
         return preferred
     if torch.cuda.is_available():
@@ -281,6 +291,9 @@ def ensure_output_table(conn, out_schema: str, out_table: str) -> None:
                     concept_id UUID,
                     concept_label TEXT NOT NULL,
                     concept_score DOUBLE PRECISION NOT NULL,
+                    discipline_predictions JSONB NOT NULL DEFAULT '[]'::jsonb,
+                    concept_predictions JSONB NOT NULL DEFAULT '[]'::jsonb,
+                    prediction_threshold DOUBLE PRECISION NOT NULL DEFAULT 0.85,
                     model_repo TEXT NOT NULL,
                     discipline_model_file TEXT NOT NULL,
                     concept_model_file TEXT NOT NULL,
@@ -288,6 +301,21 @@ def ensure_output_table(conn, out_schema: str, out_table: str) -> None:
                     classified_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
                 )
                 """
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "ALTER TABLE {}.{} ADD COLUMN IF NOT EXISTS discipline_predictions JSONB"
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "ALTER TABLE {}.{} ADD COLUMN IF NOT EXISTS concept_predictions JSONB"
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "ALTER TABLE {}.{} ADD COLUMN IF NOT EXISTS prediction_threshold DOUBLE PRECISION"
             ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
         )
     conn.commit()
@@ -300,6 +328,7 @@ def get_counts(
     out_schema: str,
     out_table: str,
     physics_ids: Sequence[str],
+    threshold: float,
 ) -> Tuple[int, int]:
     with conn.cursor() as cur:
         cur.execute(
@@ -324,6 +353,9 @@ def get_counts(
                   ON o.paper_id = s.id
                 WHERE s.categories IS NOT NULL
                   AND string_to_array(s.categories, ' ') && %s::text[]
+                  AND o.discipline_predictions IS NOT NULL
+                  AND o.concept_predictions IS NOT NULL
+                  AND o.prediction_threshold IS NOT DISTINCT FROM %s
                 """
             ).format(
                 sql.Identifier(source_schema),
@@ -331,7 +363,7 @@ def get_counts(
                 sql.Identifier(out_schema),
                 sql.Identifier(out_table),
             ),
-            (list(physics_ids),),
+            (list(physics_ids), threshold),
         )
         already_done = int(cur.fetchone()[0])
 
@@ -378,7 +410,12 @@ def build_select_query(
               ON o.paper_id = s.id
             WHERE s.categories IS NOT NULL
               AND string_to_array(s.categories, ' ') && %s::text[]
-              AND o.paper_id IS NULL
+              AND (
+                    o.paper_id IS NULL
+                    OR o.discipline_predictions IS NULL
+                    OR o.concept_predictions IS NULL
+                    OR o.prediction_threshold IS DISTINCT FROM %s
+                  )
             ORDER BY s.id
             LIMIT %s
             """
@@ -397,7 +434,12 @@ def build_select_query(
           ON o.paper_id = s.id
         WHERE s.categories IS NOT NULL
           AND string_to_array(s.categories, ' ') && %s::text[]
-          AND o.paper_id IS NULL
+          AND (
+                o.paper_id IS NULL
+                OR o.discipline_predictions IS NULL
+                OR o.concept_predictions IS NULL
+                OR o.prediction_threshold IS DISTINCT FROM %s
+              )
         ORDER BY s.id
         """
     ).format(
@@ -428,6 +470,9 @@ def write_predictions(
             concept_id,
             concept_label,
             concept_score,
+            discipline_predictions,
+            concept_predictions,
+            prediction_threshold,
             model_repo,
             discipline_model_file,
             concept_model_file,
@@ -443,6 +488,9 @@ def write_predictions(
             concept_id = EXCLUDED.concept_id,
             concept_label = EXCLUDED.concept_label,
             concept_score = EXCLUDED.concept_score,
+            discipline_predictions = EXCLUDED.discipline_predictions,
+            concept_predictions = EXCLUDED.concept_predictions,
+            prediction_threshold = EXCLUDED.prediction_threshold,
             model_repo = EXCLUDED.model_repo,
             discipline_model_file = EXCLUDED.discipline_model_file,
             concept_model_file = EXCLUDED.concept_model_file,
@@ -456,10 +504,50 @@ def write_predictions(
     conn.commit()
 
 
+def select_thresholded_indices(
+    prob_vector: np.ndarray, threshold: float
+) -> Tuple[List[int], bool]:
+    selected = np.where(prob_vector >= threshold)[0]
+    if selected.size == 0:
+        return [int(np.argmax(prob_vector))], True
+
+    ordered = sorted(
+        (int(idx) for idx in selected),
+        key=lambda idx: float(prob_vector[idx]),
+        reverse=True,
+    )
+    return ordered, False
+
+
+def build_prediction_payload(
+    label_meta: Sequence[Dict],
+    prob_vector: np.ndarray,
+    selected_indices: Sequence[int],
+    id_key: str,
+    default_prefix: str,
+    fallback_used: bool,
+) -> List[Dict]:
+    selected_by = "top1_fallback" if fallback_used else "threshold"
+    payload: List[Dict] = []
+    for rank, idx in enumerate(selected_indices, 1):
+        meta = label_meta[idx]
+        payload.append(
+            {
+                id_key: meta.get(id_key),
+                "label": meta.get("label", f"{default_prefix}_{idx}"),
+                "score": float(prob_vector[idx]),
+                "rank": rank,
+                "selected_by": selected_by,
+            }
+        )
+    return payload
+
+
 def classify_batch(
     models: LoadedModels,
     paper_rows: Sequence[Tuple[str, str, str, str]],
     embedding_batch_size: int,
+    threshold: float,
     model_repo: str,
     discipline_model_file: str,
     concept_model_file: str,
@@ -486,28 +574,47 @@ def classify_batch(
     discipline_probs = discipline_probs_tensor.cpu().numpy()
     concept_probs = concept_probs_tensor.cpu().numpy()
 
-    discipline_top_idx = np.argmax(discipline_probs, axis=1)
-    concept_top_idx = np.argmax(concept_probs, axis=1)
-
     now_ts = datetime.now(timezone.utc)
     out_rows: List[Tuple] = []
     for i, (paper_id, _, _, categories) in enumerate(paper_rows):
-        d_idx = int(discipline_top_idx[i])
-        c_idx = int(concept_top_idx[i])
+        d_indices, d_fallback = select_thresholded_indices(discipline_probs[i], threshold)
+        c_indices, c_fallback = select_thresholded_indices(concept_probs[i], threshold)
 
-        d_meta = models.discipline_labels[d_idx]
-        c_meta = models.concept_labels[c_idx]
+        d_payload = build_prediction_payload(
+            label_meta=models.discipline_labels,
+            prob_vector=discipline_probs[i],
+            selected_indices=d_indices,
+            id_key="discipline_id",
+            default_prefix="Discipline",
+            fallback_used=d_fallback,
+        )
+        c_payload = build_prediction_payload(
+            label_meta=models.concept_labels,
+            prob_vector=concept_probs[i],
+            selected_indices=c_indices,
+            id_key="concept_id",
+            default_prefix="Concept",
+            fallback_used=c_fallback,
+        )
+
+        d_top_idx = d_indices[0]
+        c_top_idx = c_indices[0]
+        d_top = models.discipline_labels[d_top_idx]
+        c_top = models.concept_labels[c_top_idx]
 
         out_rows.append(
             (
                 paper_id,
                 categories,
-                d_meta.get("discipline_id"),
-                d_meta.get("label", f"Discipline_{d_idx}"),
-                float(discipline_probs[i, d_idx]),
-                c_meta.get("concept_id"),
-                c_meta.get("label", f"Concept_{c_idx}"),
-                float(concept_probs[i, c_idx]),
+                d_top.get("discipline_id"),
+                d_top.get("label", f"Discipline_{d_top_idx}"),
+                float(discipline_probs[i, d_top_idx]),
+                c_top.get("concept_id"),
+                c_top.get("label", f"Concept_{c_top_idx}"),
+                float(concept_probs[i, c_top_idx]),
+                extras.Json(d_payload),
+                extras.Json(c_payload),
+                threshold,
                 model_repo,
                 discipline_model_file,
                 concept_model_file,
@@ -533,12 +640,15 @@ def run(args: argparse.Namespace) -> None:
         raise RuntimeError(
             "Missing DB credentials. Set in .env or pass --db-host/--db-name/--db-user/--db-password."
         )
+    if not (0.0 <= args.threshold <= 1.0):
+        raise ValueError("--threshold must be between 0 and 1.")
 
     source_schema, source_table = parse_schema_table(args.source_table)
     out_schema, out_table = parse_schema_table(args.output_table)
 
     physics_ids = load_physics_ids(Path(args.physics_categories_csv))
     print(f"[setup] loaded {len(physics_ids)} physics arXiv IDs from {args.physics_categories_csv}")
+    print(f"[setup] threshold={args.threshold:.2f} (fallback to top-1 if no label passes)")
 
     device = resolve_device(args.device)
     hf_token = args.hf_token or get_env_or_default(dotenv, "HF_TOKEN")
@@ -580,6 +690,7 @@ def run(args: argparse.Namespace) -> None:
             out_schema,
             out_table,
             physics_ids,
+            args.threshold,
         )
         pending = total_physics if args.force_reclassify else max(total_physics - already_done, 0)
         print(
@@ -596,7 +707,14 @@ def run(args: argparse.Namespace) -> None:
             use_limit,
         )
 
-        params: Tuple = (physics_ids, args.limit) if use_limit else (physics_ids,)
+        if args.force_reclassify:
+            params: Tuple = (physics_ids, args.limit) if use_limit else (physics_ids,)
+        else:
+            params = (
+                (physics_ids, args.threshold, args.limit)
+                if use_limit
+                else (physics_ids, args.threshold)
+            )
 
         select_cur = read_conn.cursor(name="physics_paper_cursor")
         select_cur.itersize = args.fetch_batch_size
@@ -614,6 +732,7 @@ def run(args: argparse.Namespace) -> None:
                 models=models,
                 paper_rows=batch,
                 embedding_batch_size=args.embedding_batch_size,
+                threshold=args.threshold,
                 model_repo=args.model_repo,
                 discipline_model_file=args.discipline_model_file,
                 concept_model_file=args.concept_model_file,
@@ -700,7 +819,17 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--hf-token", default=None, help="Optional HF token")
 
-    parser.add_argument("--device", default="auto", help="auto|cpu|cuda|mps")
+    parser.add_argument(
+        "--device",
+        default="gpu",
+        help="gpu|auto|cpu|cuda|mps (default: gpu)",
+    )
+    parser.add_argument(
+        "--threshold",
+        type=float,
+        default=0.85,
+        help="Probability threshold for multi-label predictions; if none pass, uses top-1.",
+    )
     parser.add_argument("--fetch-batch-size", type=int, default=32)
     parser.add_argument("--embedding-batch-size", type=int, default=32)
     parser.add_argument("--limit", type=int, default=None, help="Optional max rows to process")
