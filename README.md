@@ -1,5 +1,20 @@
 # arxiv_physh
 
+# quick smoke test
+python3 classify_arxiv_physics.py --limit 100
+
+# set threshold (default is 0.85)
+python3 classify_arxiv_physics.py --threshold 0.9
+
+# force reclassify everything (ignore existing rows)
+python3 classify_arxiv_physics.py --force-reclassify
+
+# force specific device
+python3 classify_arxiv_physics.py --device cuda
+python3 classify_arxiv_physics.py --device mps
+python3 classify_arxiv_physics.py --device cpu
+
+
 Batch classification of physics-related arXiv papers in Postgres using:
 - `google/embeddinggemma-300m` embeddings
 - `LukeFP/physh_topic_supervised_classifier` heads for:

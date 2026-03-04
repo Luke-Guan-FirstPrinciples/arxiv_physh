@@ -1,0 +1,5 @@
+numpy
+psycopg2-binary
+torch
+sentence-transformers
+huggingface_hub
