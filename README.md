@@ -73,6 +73,26 @@ python3 classify_arxiv_physics.py --limit 100 --fetch-batch-size 16 --embedding-
 python3 classify_arxiv_physics.py --force-reclassify
 ```
 
+## Physics keyword extraction (PoC)
+
+Extract physics-emphasized keywords from title + abstract:
+
+```bash
+python3 extract_arxiv_physics_keywords.py \
+  --title "Quantum criticality in frustrated spin systems" \
+  --abstract "We study finite-temperature scaling near a quantum phase transition..." \
+  --device cuda
+```
+
+JSON output:
+
+```bash
+python3 extract_arxiv_physics_keywords.py \
+  --title "Quantum criticality in frustrated spin systems" \
+  --abstract "We study finite-temperature scaling near a quantum phase transition..." \
+  --json
+```
+
 ## Resumability
 
 - Upsert key is `paper_id`
