@@ -28,7 +28,7 @@ Physics filter:
 - uses `arxiv_physics_categories.csv` (`id` column)
 
 Output table:
-- `arxiv_base.arxiv_from_kaggle_physh_predictions`
+- `classifications_and_keywords.arxiv_from_kaggle_physh_predictions`
 
 ## Prediction behavior
 
@@ -75,23 +75,34 @@ python3 classify_arxiv_physics.py --force-reclassify
 
 ## Physics keyword extraction (PoC)
 
-Extract physics-emphasized keywords from title + abstract:
+Config file:
 
 ```bash
-python3 extract_arxiv_physics_keywords.py \
-  --title "Quantum criticality in frustrated spin systems" \
-  --abstract "We study finite-temperature scaling near a quantum phase transition..." \
-  --device cuda
+extract_keywords_config.yaml
 ```
 
-JSON output:
+Run extraction:
 
 ```bash
-python3 extract_arxiv_physics_keywords.py \
-  --title "Quantum criticality in frustrated spin systems" \
-  --abstract "We study finite-temperature scaling near a quantum phase transition..." \
-  --json
+python3 extract_arxiv_physics_keywords.py --config extract_keywords_config.yaml
 ```
+
+Useful overrides:
+
+```bash
+# Test first N rows without writing output table rows
+python3 extract_arxiv_physics_keywords.py --config extract_keywords_config.yaml --limit 100 --dry-run
+
+# Recompute even if output table already contains paper_id rows
+python3 extract_arxiv_physics_keywords.py --config extract_keywords_config.yaml --force-recompute
+```
+
+Main config toggles in YAML:
+- `input.text_mode`: `title` | `abstract` | `title+abstract`
+- `keywords.physics_boost_enabled`: `true` | `false`
+- `output.schema`: default target schema (`classifications_and_keywords`)
+- `output.table`: `auto` (auto-generated table name from mode + boost flag in `output.schema`) or explicit `schema.table`
+- `input.physics_only`: `true` to filter by `arxiv_physics_categories.csv`, `false` for all categories
 
 ## Resumability
 

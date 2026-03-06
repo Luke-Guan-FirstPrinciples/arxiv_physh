@@ -4,3 +4,4 @@ torch
 sentence-transformers
 huggingface_hub
 keybert
+pyyaml

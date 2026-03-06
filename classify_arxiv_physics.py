@@ -10,7 +10,7 @@ Physics filter:
   arxiv_physics_categories.csv (the `id` column).
 
 Output table (default):
-  arxiv_base.arxiv_from_kaggle_physh_predictions
+  classifications_and_keywords.arxiv_from_kaggle_physh_predictions
 
 The script is resumable by default:
 - it upserts by `paper_id`
@@ -279,6 +279,9 @@ def load_models(
 
 def ensure_output_table(conn, out_schema: str, out_table: str) -> None:
     with conn.cursor() as cur:
+        cur.execute(
+            sql.SQL("CREATE SCHEMA IF NOT EXISTS {}").format(sql.Identifier(out_schema))
+        )
         cur.execute(
             sql.SQL(
                 """
@@ -790,7 +793,7 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument(
         "--output-table",
-        default="arxiv_base.arxiv_from_kaggle_physh_predictions",
+        default="classifications_and_keywords.arxiv_from_kaggle_physh_predictions",
         help="Output table for predictions",
     )
     parser.add_argument(

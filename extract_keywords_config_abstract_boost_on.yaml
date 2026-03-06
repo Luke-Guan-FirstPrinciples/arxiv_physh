@@ -1,0 +1,45 @@
+# YAML config for extract_arxiv_physics_keywords.py
+# Preset: abstract-only input with physics boost enabled.
+
+env_file: .env
+
+database:
+  host:
+  port: 5432
+  name:
+  user:
+  password:
+
+input:
+  source_table: arxiv_base.arxiv_from_kaggle
+  id_column: id
+  title_column: title
+  abstract_column: abstract
+  categories_column: categories
+  text_mode: abstract
+  physics_only: true
+  physics_categories_csv: arxiv_physics_categories.csv
+  limit:
+  fetch_batch_size: 32
+  force_recompute: false
+
+keywords:
+  model: allenai/scibert_scivocab_uncased
+  device: gpu
+  min_ngram: 1
+  max_ngram: 3
+  candidate_top_n: 30
+  top_n: 10
+  stop_words: english
+  use_mmr: true
+  diversity: 0.35
+  physics_boost_enabled: true
+
+output:
+  schema: classifications_and_keywords
+  table: auto
+  include_source_text: false
+  write_batch_size: 500
+
+runtime:
+  dry_run: false

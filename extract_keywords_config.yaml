@@ -1,0 +1,64 @@
+# YAML config for extract_arxiv_physics_keywords.py
+#
+# Common mode combos:
+# - title only:           input.text_mode: title
+# - abstract only:        input.text_mode: abstract
+# - title + abstract:     input.text_mode: title+abstract
+# Physics boost toggle:
+# - enabled:              keywords.physics_boost_enabled: true
+# - disabled:             keywords.physics_boost_enabled: false
+#
+# Output table:
+# - output.table: auto  -> auto-generated from source table + text mode + boost flag
+# - output.table: schema.table_name -> explicit table name
+
+env_file: .env
+
+database:
+  host:
+  port: 5432
+  name:
+  user:
+  password:
+
+input:
+  source_table: arxiv_base.arxiv_from_kaggle
+  id_column: id
+  title_column: title
+  abstract_column: abstract
+  categories_column: categories
+  text_mode: title+abstract
+
+  # true => only rows matching arxiv_physics_categories.csv IDs
+  # false => all rows in source table
+  physics_only: true
+  physics_categories_csv: arxiv_physics_categories.csv
+
+  # null => no explicit limit
+  limit:
+  fetch_batch_size: 32
+  force_recompute: false
+
+keywords:
+  model: allenai/scibert_scivocab_uncased
+  device: gpu
+  min_ngram: 1
+  max_ngram: 3
+  candidate_top_n: 30
+  top_n: 10
+  stop_words: english
+  use_mmr: true
+  diversity: 0.35
+
+  # true => apply PHYSICS_TOKEN_HINTS / PHYSICS_PHRASE_HINTS / GENERIC_PENALTY_TOKENS
+  # false => pure KeyBERT ranking
+  physics_boost_enabled: true
+
+output:
+  schema: classifications_and_keywords
+  table: auto
+  include_source_text: false
+  write_batch_size: 500
+
+runtime:
+  dry_run: false
