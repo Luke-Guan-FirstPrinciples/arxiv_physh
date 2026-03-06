@@ -36,7 +36,7 @@ input:
 
   # null => no explicit limit
   limit:
-  fetch_batch_size: 32
+  fetch_batch_size: 128
   force_recompute: false
 
 keywords:

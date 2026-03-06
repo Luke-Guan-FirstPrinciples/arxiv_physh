@@ -1,3 +1,6 @@
+# Keyword extraction on buzz
+HF_HOME=~/.cache/huggingface python  extract_arxiv_physics_keywords.py --config extract_keywords_config_abstract_boost_on.yaml
+
 # arxiv_physh
 
 # quick smoke test

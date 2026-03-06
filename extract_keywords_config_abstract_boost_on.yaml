@@ -20,7 +20,7 @@ input:
   physics_only: true
   physics_categories_csv: arxiv_physics_categories.csv
   limit:
-  fetch_batch_size: 32
+  fetch_batch_size: 128
   force_recompute: false
 
 keywords:

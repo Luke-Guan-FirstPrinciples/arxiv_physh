@@ -162,7 +162,7 @@ DEFAULT_CONFIG: Dict[str, Any] = {
         "physics_only": True,
         "physics_categories_csv": "arxiv_physics_categories.csv",
         "limit": None,
-        "fetch_batch_size": 32,
+        "fetch_batch_size": 128,
         "force_recompute": False,
     },
     "keywords": {
