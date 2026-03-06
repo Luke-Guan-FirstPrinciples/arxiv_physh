@@ -171,11 +171,16 @@ DEFAULT_CONFIG: Dict[str, Any] = {
         "min_ngram": 1,
         "max_ngram": 3,
         "candidate_top_n": 30,
-        "top_n": 10,
+        "top_n": 15,
         "stop_words": "english",
         "use_mmr": True,
         "diversity": 0.35,
         "physics_boost_enabled": True,
+        "quota_enabled": True,
+        "quota_min_1gram": 5,
+        "quota_min_2gram": 5,
+        "quota_min_3gram": 3,
+        "quota_min_score": 0.70,
     },
     "output": {
         "schema": "classifications_and_keywords",
@@ -371,19 +376,43 @@ def physics_boost(keyword: str, title_tokens: set[str]) -> float:
     return clamp_float(boost, -0.1, 0.4)
 
 
-def extract_keywords_from_text(
+def keyword_ngram_size(keyword: str) -> int:
+    return max(1, len(tokenize_lower(keyword)))
+
+
+def dedupe_keywords_by_best_score(
+    keywords: Sequence[Dict[str, float | str | int]],
+) -> List[Dict[str, float | str | int]]:
+    by_keyword: Dict[str, Dict[str, float | str | int]] = {}
+    for row in keywords:
+        key = str(row["keyword"])
+        existing = by_keyword.get(key)
+        if existing is None:
+            by_keyword[key] = dict(row)
+            continue
+        if (float(row["score"]), float(row["base_score"])) > (
+            float(existing["score"]),
+            float(existing["base_score"]),
+        ):
+            by_keyword[key] = dict(row)
+
+    out = list(by_keyword.values())
+    out.sort(key=lambda row: (row["score"], row["base_score"]), reverse=True)
+    return out
+
+
+def extract_keyword_candidates(
     kw_model: KeyBERT,
     text: str,
     title: str | None,
     min_ngram: int,
     max_ngram: int,
     candidate_top_n: int,
-    top_n: int,
     stop_words: str | None,
     use_mmr: bool,
     diversity: float,
     physics_boost_enabled: bool,
-) -> List[Dict[str, float | str]]:
+) -> List[Dict[str, float | str | int]]:
     cleaned = clean_text(text)
     if not cleaned:
         return []
@@ -398,7 +427,7 @@ def extract_keywords_from_text(
     )
 
     title_tokens = set(tokenize_lower(title or ""))
-    rescored: List[Dict[str, float | str]] = []
+    rescored: List[Dict[str, float | str | int]] = []
     seen: set[str] = set()
     for keyword, base_score in raw_keywords:
         normalized_keyword = clean_text(keyword).lower()
@@ -414,11 +443,142 @@ def extract_keywords_from_text(
                 "score": round(final_score, 6),
                 "base_score": round(float(base_score), 6),
                 "physics_boost": round(float(boost), 6),
+                "ngram": keyword_ngram_size(normalized_keyword),
             }
         )
 
     rescored.sort(key=lambda row: (row["score"], row["base_score"]), reverse=True)
+    return rescored
+
+
+def select_quota_keywords(
+    candidates_by_ngram: Dict[int, List[Dict[str, float | str | int]]],
+    top_n: int,
+    quota_min_1gram: int,
+    quota_min_2gram: int,
+    quota_min_3gram: int,
+    quota_min_score: float,
+) -> List[Dict[str, float | str | int]]:
+    quotas = {1: quota_min_1gram, 2: quota_min_2gram, 3: quota_min_3gram}
+
+    selected: List[Dict[str, float | str | int]] = []
+    seen: set[str] = set()
+    leftovers_above_floor: List[Dict[str, float | str | int]] = []
+    leftovers_all: List[Dict[str, float | str | int]] = []
+
+    for ngram in (1, 2, 3):
+        bucket = candidates_by_ngram.get(ngram, [])
+        quota = quotas[ngram]
+        taken = 0
+        for row in bucket:
+            key = str(row["keyword"])
+            if key in seen:
+                continue
+
+            score = float(row["score"])
+            above_floor = score >= quota_min_score
+            if taken < quota and above_floor and len(selected) < top_n:
+                selected.append(row)
+                seen.add(key)
+                taken += 1
+                continue
+
+            leftovers_all.append(row)
+            if above_floor:
+                leftovers_above_floor.append(row)
+
+    for row in dedupe_keywords_by_best_score(leftovers_above_floor):
+        if len(selected) >= top_n:
+            break
+        key = str(row["keyword"])
+        if key in seen:
+            continue
+        selected.append(row)
+        seen.add(key)
+
+    if len(selected) < top_n:
+        for row in dedupe_keywords_by_best_score(leftovers_all):
+            if len(selected) >= top_n:
+                break
+            key = str(row["keyword"])
+            if key in seen:
+                continue
+            selected.append(row)
+            seen.add(key)
+
+    return selected[:top_n]
+
+
+def extract_keywords_from_text(
+    kw_model: KeyBERT,
+    text: str,
+    title: str | None,
+    min_ngram: int,
+    max_ngram: int,
+    candidate_top_n: int,
+    top_n: int,
+    stop_words: str | None,
+    use_mmr: bool,
+    diversity: float,
+    physics_boost_enabled: bool,
+) -> List[Dict[str, float | str | int]]:
+    rescored = extract_keyword_candidates(
+        kw_model=kw_model,
+        text=text,
+        title=title,
+        min_ngram=min_ngram,
+        max_ngram=max_ngram,
+        candidate_top_n=candidate_top_n,
+        stop_words=stop_words,
+        use_mmr=use_mmr,
+        diversity=diversity,
+        physics_boost_enabled=physics_boost_enabled,
+    )
     return rescored[:top_n]
+
+
+def extract_keywords_with_ngram_quotas(
+    kw_model: KeyBERT,
+    text: str,
+    title: str | None,
+    candidate_top_n: int,
+    top_n: int,
+    stop_words: str | None,
+    use_mmr: bool,
+    diversity: float,
+    physics_boost_enabled: bool,
+    quota_min_1gram: int,
+    quota_min_2gram: int,
+    quota_min_3gram: int,
+    quota_min_score: float,
+) -> List[Dict[str, float | str | int]]:
+    cleaned = clean_text(text)
+    if not cleaned:
+        return []
+
+    candidates_by_ngram: Dict[int, List[Dict[str, float | str | int]]] = {}
+    for ngram in (1, 2, 3):
+        candidates_by_ngram[ngram] = extract_keyword_candidates(
+            kw_model=kw_model,
+            text=cleaned,
+            title=title,
+            min_ngram=ngram,
+            max_ngram=ngram,
+            candidate_top_n=candidate_top_n,
+            stop_words=stop_words,
+            use_mmr=use_mmr,
+            diversity=diversity,
+            physics_boost_enabled=physics_boost_enabled,
+        )
+
+    return select_quota_keywords(
+        candidates_by_ngram=candidates_by_ngram,
+        top_n=top_n,
+        quota_min_1gram=quota_min_1gram,
+        quota_min_2gram=quota_min_2gram,
+        quota_min_3gram=quota_min_3gram,
+        quota_min_score=quota_min_score,
+    )
 
 
 def make_pg_identifier(raw: str) -> str:
@@ -439,11 +599,25 @@ def auto_output_table_name(
     text_mode: str,
     physics_boost_enabled: bool,
     output_schema: str,
+    quota_enabled: bool,
+    quota_min_1gram: int,
+    quota_min_2gram: int,
+    quota_min_3gram: int,
+    top_n: int,
+    quota_min_score: float,
 ) -> str:
     _, source_table_name = parse_schema_table(source_table)
     mode_slug = make_pg_identifier(text_mode.replace("+", "_"))
     boost_slug = "boost_on" if physics_boost_enabled else "boost_off"
-    raw_table_name = f"{source_table_name}_keywords_{mode_slug}_{boost_slug}"
+    if quota_enabled:
+        score_suffix = int(round(quota_min_score * 100))
+        policy_suffix = (
+            f"_q1{quota_min_1gram}_q2{quota_min_2gram}_q3{quota_min_3gram}"
+            f"_top{top_n}_ms{score_suffix}"
+        )
+    else:
+        policy_suffix = "_legacy"
+    raw_table_name = f"{source_table_name}_keywords_{mode_slug}_{boost_slug}{policy_suffix}"
     table_name = truncate_pg_identifier(make_pg_identifier(raw_table_name))
     return f"{output_schema}.{table_name}"
 
@@ -463,6 +637,11 @@ def ensure_output_table(conn, out_schema: str, out_table: str) -> None:
                     source_abstract TEXT,
                     text_mode TEXT NOT NULL,
                     physics_boost_enabled BOOLEAN NOT NULL,
+                    quota_enabled BOOLEAN NOT NULL DEFAULT FALSE,
+                    quota_min_1gram INTEGER NOT NULL DEFAULT 0,
+                    quota_min_2gram INTEGER NOT NULL DEFAULT 0,
+                    quota_min_3gram INTEGER NOT NULL DEFAULT 0,
+                    quota_min_score DOUBLE PRECISION NOT NULL DEFAULT 0.0,
                     keywords JSONB NOT NULL DEFAULT '[]'::jsonb,
                     keyword_count INTEGER NOT NULL DEFAULT 0,
                     embedding_model TEXT NOT NULL,
@@ -477,6 +656,81 @@ def ensure_output_table(conn, out_schema: str, out_table: str) -> None:
                 )
                 """
             ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "ALTER TABLE {}.{} ADD COLUMN IF NOT EXISTS quota_enabled BOOLEAN"
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "ALTER TABLE {}.{} ADD COLUMN IF NOT EXISTS quota_min_1gram INTEGER"
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "ALTER TABLE {}.{} ADD COLUMN IF NOT EXISTS quota_min_2gram INTEGER"
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "ALTER TABLE {}.{} ADD COLUMN IF NOT EXISTS quota_min_3gram INTEGER"
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "ALTER TABLE {}.{} ADD COLUMN IF NOT EXISTS quota_min_score DOUBLE PRECISION"
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "UPDATE {}.{} SET quota_enabled = FALSE WHERE quota_enabled IS NULL"
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "UPDATE {}.{} SET quota_min_1gram = 0 WHERE quota_min_1gram IS NULL"
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "UPDATE {}.{} SET quota_min_2gram = 0 WHERE quota_min_2gram IS NULL"
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "UPDATE {}.{} SET quota_min_3gram = 0 WHERE quota_min_3gram IS NULL"
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL(
+                "UPDATE {}.{} SET quota_min_score = 0.0 WHERE quota_min_score IS NULL"
+            ).format(sql.Identifier(out_schema), sql.Identifier(out_table))
+        )
+        cur.execute(
+            sql.SQL("ALTER TABLE {}.{} ALTER COLUMN quota_enabled SET NOT NULL").format(
+                sql.Identifier(out_schema), sql.Identifier(out_table)
+            )
+        )
+        cur.execute(
+            sql.SQL("ALTER TABLE {}.{} ALTER COLUMN quota_min_1gram SET NOT NULL").format(
+                sql.Identifier(out_schema), sql.Identifier(out_table)
+            )
+        )
+        cur.execute(
+            sql.SQL("ALTER TABLE {}.{} ALTER COLUMN quota_min_2gram SET NOT NULL").format(
+                sql.Identifier(out_schema), sql.Identifier(out_table)
+            )
+        )
+        cur.execute(
+            sql.SQL("ALTER TABLE {}.{} ALTER COLUMN quota_min_3gram SET NOT NULL").format(
+                sql.Identifier(out_schema), sql.Identifier(out_table)
+            )
+        )
+        cur.execute(
+            sql.SQL("ALTER TABLE {}.{} ALTER COLUMN quota_min_score SET NOT NULL").format(
+                sql.Identifier(out_schema), sql.Identifier(out_table)
+            )
         )
     conn.commit()
 
@@ -654,6 +908,11 @@ def write_keywords(
             source_abstract,
             text_mode,
             physics_boost_enabled,
+            quota_enabled,
+            quota_min_1gram,
+            quota_min_2gram,
+            quota_min_3gram,
+            quota_min_score,
             keywords,
             keyword_count,
             embedding_model,
@@ -673,6 +932,11 @@ def write_keywords(
             source_abstract = EXCLUDED.source_abstract,
             text_mode = EXCLUDED.text_mode,
             physics_boost_enabled = EXCLUDED.physics_boost_enabled,
+            quota_enabled = EXCLUDED.quota_enabled,
+            quota_min_1gram = EXCLUDED.quota_min_1gram,
+            quota_min_2gram = EXCLUDED.quota_min_2gram,
+            quota_min_3gram = EXCLUDED.quota_min_3gram,
+            quota_min_score = EXCLUDED.quota_min_score,
             keywords = EXCLUDED.keywords,
             keyword_count = EXCLUDED.keyword_count,
             embedding_model = EXCLUDED.embedding_model,
@@ -706,25 +970,47 @@ def build_rows_for_batch(
     use_mmr: bool,
     diversity: float,
     physics_boost_enabled: bool,
+    quota_enabled: bool,
+    quota_min_1gram: int,
+    quota_min_2gram: int,
+    quota_min_3gram: int,
+    quota_min_score: float,
 ) -> List[Tuple[Any, ...]]:
     now = datetime.now(timezone.utc)
     out_rows: List[Tuple[Any, ...]] = []
 
     for paper_id, title, abstract, categories in batch:
         input_text = select_input_text(title, abstract, text_mode)
-        keywords = extract_keywords_from_text(
-            kw_model=kw_model,
-            text=input_text,
-            title=title,
-            min_ngram=min_ngram,
-            max_ngram=max_ngram,
-            candidate_top_n=candidate_top_n,
-            top_n=top_n,
-            stop_words=stop_words,
-            use_mmr=use_mmr,
-            diversity=diversity,
-            physics_boost_enabled=physics_boost_enabled,
-        )
+        if quota_enabled:
+            keywords = extract_keywords_with_ngram_quotas(
+                kw_model=kw_model,
+                text=input_text,
+                title=title,
+                candidate_top_n=candidate_top_n,
+                top_n=top_n,
+                stop_words=stop_words,
+                use_mmr=use_mmr,
+                diversity=diversity,
+                physics_boost_enabled=physics_boost_enabled,
+                quota_min_1gram=quota_min_1gram,
+                quota_min_2gram=quota_min_2gram,
+                quota_min_3gram=quota_min_3gram,
+                quota_min_score=quota_min_score,
+            )
+        else:
+            keywords = extract_keywords_from_text(
+                kw_model=kw_model,
+                text=input_text,
+                title=title,
+                min_ngram=min_ngram,
+                max_ngram=max_ngram,
+                candidate_top_n=candidate_top_n,
+                top_n=top_n,
+                stop_words=stop_words,
+                use_mmr=use_mmr,
+                diversity=diversity,
+                physics_boost_enabled=physics_boost_enabled,
+            )
 
         out_rows.append(
             (
@@ -734,6 +1020,11 @@ def build_rows_for_batch(
                 abstract if include_source_text else None,
                 text_mode,
                 physics_boost_enabled,
+                quota_enabled,
+                quota_min_1gram,
+                quota_min_2gram,
+                quota_min_3gram,
+                quota_min_score,
                 extras.Json(keywords),
                 len(keywords),
                 model_name,
@@ -779,6 +1070,11 @@ def validate_config(config: Dict[str, Any]) -> None:
     keyword_cfg["diversity"] = float(keyword_cfg["diversity"])
     keyword_cfg["use_mmr"] = as_bool(keyword_cfg["use_mmr"])
     keyword_cfg["physics_boost_enabled"] = as_bool(keyword_cfg["physics_boost_enabled"])
+    keyword_cfg["quota_enabled"] = as_bool(keyword_cfg.get("quota_enabled", True))
+    keyword_cfg["quota_min_1gram"] = int(keyword_cfg.get("quota_min_1gram", 5))
+    keyword_cfg["quota_min_2gram"] = int(keyword_cfg.get("quota_min_2gram", 5))
+    keyword_cfg["quota_min_3gram"] = int(keyword_cfg.get("quota_min_3gram", 3))
+    keyword_cfg["quota_min_score"] = float(keyword_cfg.get("quota_min_score", 0.70))
     keyword_cfg["stop_words"] = normalize_stop_words(keyword_cfg["stop_words"])
     if keyword_cfg["min_ngram"] < 1 or keyword_cfg["max_ngram"] < 1:
         raise ValueError("keywords.min_ngram and keywords.max_ngram must be >= 1.")
@@ -786,10 +1082,40 @@ def validate_config(config: Dict[str, Any]) -> None:
         raise ValueError("keywords.min_ngram cannot exceed keywords.max_ngram.")
     if keyword_cfg["top_n"] < 1 or keyword_cfg["candidate_top_n"] < 1:
         raise ValueError("keywords.top_n and keywords.candidate_top_n must be >= 1.")
-    if keyword_cfg["candidate_top_n"] < keyword_cfg["top_n"]:
+    if (
+        not keyword_cfg["quota_enabled"]
+        and keyword_cfg["candidate_top_n"] < keyword_cfg["top_n"]
+    ):
         raise ValueError("keywords.candidate_top_n must be >= keywords.top_n.")
     if not (0.0 <= keyword_cfg["diversity"] <= 1.0):
         raise ValueError("keywords.diversity must be in [0, 1].")
+    if (
+        keyword_cfg["quota_min_1gram"] < 0
+        or keyword_cfg["quota_min_2gram"] < 0
+        or keyword_cfg["quota_min_3gram"] < 0
+    ):
+        raise ValueError("keywords.quota_min_* must be >= 0.")
+    if not (0.0 <= keyword_cfg["quota_min_score"] <= 1.0):
+        raise ValueError("keywords.quota_min_score must be in [0, 1].")
+    if keyword_cfg["quota_enabled"]:
+        quota_sum = (
+            keyword_cfg["quota_min_1gram"]
+            + keyword_cfg["quota_min_2gram"]
+            + keyword_cfg["quota_min_3gram"]
+        )
+        if keyword_cfg["top_n"] < quota_sum:
+            raise ValueError(
+                "keywords.top_n must be >= quota_min_1gram + quota_min_2gram + quota_min_3gram."
+            )
+        max_quota = max(
+            keyword_cfg["quota_min_1gram"],
+            keyword_cfg["quota_min_2gram"],
+            keyword_cfg["quota_min_3gram"],
+        )
+        if keyword_cfg["candidate_top_n"] < max_quota:
+            raise ValueError(
+                "keywords.candidate_top_n must be >= max(quota_min_1gram, quota_min_2gram, quota_min_3gram)."
+            )
 
     output_cfg["include_source_text"] = as_bool(output_cfg["include_source_text"])
     output_cfg["write_batch_size"] = int(output_cfg["write_batch_size"])
@@ -845,6 +1171,12 @@ def run(args: argparse.Namespace) -> None:
             text_mode=str(input_cfg["text_mode"]),
             physics_boost_enabled=bool(keyword_cfg["physics_boost_enabled"]),
             output_schema=output_schema_cfg,
+            quota_enabled=bool(keyword_cfg["quota_enabled"]),
+            quota_min_1gram=int(keyword_cfg["quota_min_1gram"]),
+            quota_min_2gram=int(keyword_cfg["quota_min_2gram"]),
+            quota_min_3gram=int(keyword_cfg["quota_min_3gram"]),
+            top_n=int(keyword_cfg["top_n"]),
+            quota_min_score=float(keyword_cfg["quota_min_score"]),
         )
     else:
         if "." in output_table_cfg:
@@ -875,6 +1207,19 @@ def run(args: argparse.Namespace) -> None:
         f"{input_cfg['text_mode']} | boost={keyword_cfg['physics_boost_enabled']} | "
         f"physics_only={input_cfg['physics_only']} | dry_run={runtime_cfg['dry_run']}"
     )
+    if bool(keyword_cfg["quota_enabled"]):
+        print(
+            "[setup] quota mode enabled | "
+            f"q1={keyword_cfg['quota_min_1gram']} q2={keyword_cfg['quota_min_2gram']} "
+            f"q3={keyword_cfg['quota_min_3gram']} top_n={keyword_cfg['top_n']} "
+            f"min_score={keyword_cfg['quota_min_score']:.2f}"
+        )
+    else:
+        print(
+            "[setup] quota mode disabled | "
+            f"ngram_range=({keyword_cfg['min_ngram']}, {keyword_cfg['max_ngram']}) "
+            f"top_n={keyword_cfg['top_n']}"
+        )
     print(f"[model] loading encoder={keyword_cfg['model']} on device={device}")
 
     encoder = SentenceTransformer(str(keyword_cfg["model"]), device=device)
@@ -956,6 +1301,11 @@ def run(args: argparse.Namespace) -> None:
                 use_mmr=bool(keyword_cfg["use_mmr"]),
                 diversity=float(keyword_cfg["diversity"]),
                 physics_boost_enabled=bool(keyword_cfg["physics_boost_enabled"]),
+                quota_enabled=bool(keyword_cfg["quota_enabled"]),
+                quota_min_1gram=int(keyword_cfg["quota_min_1gram"]),
+                quota_min_2gram=int(keyword_cfg["quota_min_2gram"]),
+                quota_min_3gram=int(keyword_cfg["quota_min_3gram"]),
+                quota_min_score=float(keyword_cfg["quota_min_score"]),
             )
 
             if not bool(runtime_cfg["dry_run"]):

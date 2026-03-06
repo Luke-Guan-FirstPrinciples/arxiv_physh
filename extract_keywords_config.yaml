@@ -9,7 +9,7 @@
 # - disabled:             keywords.physics_boost_enabled: false
 #
 # Output table:
-# - output.table: auto  -> auto-generated from source table + text mode + boost flag
+# - output.table: auto  -> auto-generated from source table + mode + boost + quota policy
 # - output.table: schema.table_name -> explicit table name
 
 env_file: .env
@@ -45,7 +45,7 @@ keywords:
   min_ngram: 1
   max_ngram: 3
   candidate_top_n: 30
-  top_n: 10
+  top_n: 15
   stop_words: english
   use_mmr: true
   diversity: 0.35
@@ -53,6 +53,11 @@ keywords:
   # true => apply PHYSICS_TOKEN_HINTS / PHYSICS_PHRASE_HINTS / GENERIC_PENALTY_TOKENS
   # false => pure KeyBERT ranking
   physics_boost_enabled: true
+  quota_enabled: true
+  quota_min_1gram: 5
+  quota_min_2gram: 5
+  quota_min_3gram: 3
+  quota_min_score: 0.70
 
 output:
   schema: classifications_and_keywords

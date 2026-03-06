@@ -103,9 +103,16 @@ python3 extract_arxiv_physics_keywords.py --config extract_keywords_config.yaml 
 Main config toggles in YAML:
 - `input.text_mode`: `title` | `abstract` | `title+abstract`
 - `keywords.physics_boost_enabled`: `true` | `false`
+- `keywords.quota_enabled`: `true` enables per-ngram quota mode (`(1,1)`, `(2,2)`, `(3,3)`)
+- `keywords.quota_min_1gram` / `quota_min_2gram` / `quota_min_3gram`: minimum picks per n-gram bucket
+- `keywords.quota_min_score`: global score floor used before quota backfill
+- `keywords.top_n`: final output size (must be `>= quota_min_1gram + quota_min_2gram + quota_min_3gram`)
 - `output.schema`: default target schema (`classifications_and_keywords`)
-- `output.table`: `auto` (auto-generated table name from mode + boost flag in `output.schema`) or explicit `schema.table`
+- `output.table`: `auto` (auto-generated table name from mode + boost + quota policy in `output.schema`) or explicit `schema.table`
 - `input.physics_only`: `true` to filter by `arxiv_physics_categories.csv`, `false` for all categories
+
+With quota mode enabled, auto table names include a policy suffix:
+- `..._q1{min1}_q2{min2}_q3{min3}_top{top_n}_ms{min_score_percent}`
 
 ## Resumability
 
