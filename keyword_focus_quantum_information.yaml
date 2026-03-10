@@ -1,0 +1,69 @@
+label: quantum_information_focus
+
+groups:
+  - label: Quantum computing
+    exact_terms:
+      - quantum computing
+    regex_patterns:
+      - 'quantum comput(ing|ation|ations|er|ers)'
+
+  - label: Quantum algorithms
+    exact_terms:
+      - quantum algorithms
+    regex_patterns:
+      - 'quantum algorithms?'
+
+  - label: Quantum communications
+    exact_terms:
+      - quantum communications
+    regex_patterns:
+      - 'quantum communication(s)?'
+
+  - label: Quantum error correction
+    exact_terms:
+      - quantum error correction
+    regex_patterns:
+      - 'quantum error correction'
+
+  - label: Quantum networks
+    exact_terms:
+      - quantum networks
+    regex_patterns:
+      - 'quantum networks?'
+
+  - label: Experimental QI
+    exact_terms:
+      - experimental qi
+    regex_patterns:
+      - 'experimental qi'
+      - 'experimental quantum information'
+      - 'quantum information experiments?'
+      - 'experimental quantum (process|state|teleportation)'
+
+  - label: Quantum cryptography
+    exact_terms:
+      - quantum cryptography
+    regex_patterns:
+      - 'quantum cryptograph(y|ic)'
+
+  - label: Quantum complexity theory
+    exact_terms:
+      - quantum complexity theory
+    regex_patterns:
+      - 'quantum complexity( theory)?'
+
+  - label: Quantum foundations
+    exact_terms:
+      - quantum foundations
+    regex_patterns:
+      - 'quantum foundations?'
+      - 'foundations quantum( mechanics)?'
+
+  - label: Quantum decoherence / noise
+    exact_terms:
+      - quantum decoherence
+      - noise
+    regex_patterns:
+      - 'quantum decoherence'
+      - 'quantum noise'
+      - 'noise quantum'

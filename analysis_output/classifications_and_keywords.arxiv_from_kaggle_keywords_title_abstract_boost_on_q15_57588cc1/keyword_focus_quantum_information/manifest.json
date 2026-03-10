@@ -1,0 +1,7 @@
+{
+  "config_path": "keyword_focus_quantum_information.yaml",
+  "focus_label": "quantum_information_focus",
+  "table_name": "classifications_and_keywords.arxiv_from_kaggle_keywords_title_abstract_boost_on_q15_57588cc1",
+  "top_variants": 15,
+  "total_papers": 38144
+}

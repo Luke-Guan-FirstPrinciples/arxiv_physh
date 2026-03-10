@@ -1,0 +1,119 @@
+group_label,keyword_rank,keyword_occurrences,paper_frequency,avg_score
+Experimental QI,7,2,2,0.8833
+Experimental QI,8,3,3,0.8469
+Experimental QI,9,1,1,0.7713
+Experimental QI,11,1,1,0.7317
+Quantum algorithms,1,14,14,0.7759
+Quantum algorithms,2,20,20,0.7771
+Quantum algorithms,3,13,13,0.7585
+Quantum algorithms,4,11,11,0.7659
+Quantum algorithms,5,5,5,0.7786
+Quantum algorithms,6,14,14,0.8147
+Quantum algorithms,7,11,11,0.7920
+Quantum algorithms,8,12,12,0.7980
+Quantum algorithms,9,7,7,0.8030
+Quantum algorithms,10,9,9,0.7764
+Quantum algorithms,11,7,7,0.7905
+Quantum algorithms,12,5,5,0.7552
+Quantum algorithms,13,2,2,0.7696
+Quantum algorithms,14,5,5,0.7637
+Quantum algorithms,15,2,2,0.8057
+Quantum communications,1,11,11,0.7769
+Quantum communications,2,16,16,0.7904
+Quantum communications,3,15,15,0.7836
+Quantum communications,4,14,14,0.7534
+Quantum communications,5,8,8,0.7780
+Quantum communications,6,6,6,0.7733
+Quantum communications,7,13,13,0.8244
+Quantum communications,8,9,9,0.8050
+Quantum communications,9,4,4,0.7826
+Quantum communications,10,7,7,0.7927
+Quantum communications,11,4,4,0.7748
+Quantum communications,12,9,9,0.7971
+Quantum communications,13,3,3,0.7585
+Quantum communications,14,5,5,0.7717
+Quantum communications,15,7,7,0.7477
+Quantum complexity theory,1,1,1,0.8056
+Quantum complexity theory,2,2,2,0.7653
+Quantum complexity theory,6,1,1,0.7683
+Quantum complexity theory,7,1,1,0.8239
+Quantum complexity theory,8,2,2,0.7782
+Quantum complexity theory,9,1,1,0.7951
+Quantum complexity theory,10,2,2,0.7637
+Quantum computing,1,30,30,0.7724
+Quantum computing,2,38,38,0.7873
+Quantum computing,3,37,37,0.7772
+Quantum computing,4,30,30,0.7716
+Quantum computing,5,43,43,0.7708
+Quantum computing,6,35,35,0.8190
+Quantum computing,7,39,39,0.8234
+Quantum computing,8,40,40,0.8323
+Quantum computing,9,45,45,0.8012
+Quantum computing,10,40,40,0.7828
+Quantum computing,11,41,41,0.7691
+Quantum computing,12,26,26,0.7638
+Quantum computing,13,29,29,0.7655
+Quantum computing,14,33,33,0.7624
+Quantum computing,15,25,25,0.7548
+Quantum cryptography,1,2,2,0.7442
+Quantum cryptography,2,8,8,0.8015
+Quantum cryptography,3,2,2,0.8043
+Quantum cryptography,4,4,4,0.7602
+Quantum cryptography,5,3,3,0.7792
+Quantum cryptography,6,1,1,0.7617
+Quantum cryptography,7,9,9,0.8631
+Quantum cryptography,8,5,5,0.8129
+Quantum cryptography,9,6,6,0.8347
+Quantum cryptography,10,2,2,0.8386
+Quantum cryptography,11,1,1,0.8261
+Quantum cryptography,12,3,3,0.8269
+Quantum cryptography,13,4,4,0.7834
+Quantum cryptography,14,3,3,0.8027
+Quantum decoherence / noise,1,8,8,0.7656
+Quantum decoherence / noise,2,9,9,0.7947
+Quantum decoherence / noise,3,9,9,0.7742
+Quantum decoherence / noise,4,6,6,0.7864
+Quantum decoherence / noise,5,3,3,0.7753
+Quantum decoherence / noise,6,3,3,0.8111
+Quantum decoherence / noise,7,8,8,0.8416
+Quantum decoherence / noise,8,7,7,0.8112
+Quantum decoherence / noise,9,5,5,0.7774
+Quantum decoherence / noise,10,4,4,0.7628
+Quantum decoherence / noise,11,3,3,0.7810
+Quantum decoherence / noise,12,4,4,0.8052
+Quantum decoherence / noise,13,6,6,0.7455
+Quantum decoherence / noise,14,4,4,0.7355
+Quantum decoherence / noise,15,5,5,0.7539
+Quantum error correction,1,1,1,0.7642
+Quantum error correction,2,1,1,0.7720
+Quantum error correction,4,1,1,0.8323
+Quantum error correction,5,1,1,0.8325
+Quantum error correction,6,8,8,0.8481
+Quantum error correction,7,6,6,0.8399
+Quantum error correction,8,3,3,0.8022
+Quantum error correction,10,1,1,0.7610
+Quantum error correction,11,3,3,0.7638
+Quantum error correction,12,3,3,0.7945
+Quantum error correction,13,2,2,0.7925
+Quantum error correction,14,4,4,0.7915
+Quantum error correction,15,1,1,0.7512
+Quantum foundations,5,2,2,0.7488
+Quantum foundations,6,1,1,0.7225
+Quantum foundations,7,1,1,0.8175
+Quantum foundations,9,2,2,0.7498
+Quantum foundations,10,1,1,0.7706
+Quantum foundations,11,1,1,0.7329
+Quantum foundations,12,2,2,0.7849
+Quantum foundations,15,1,1,0.7512
+Quantum networks,1,2,2,0.7469
+Quantum networks,2,2,2,0.8021
+Quantum networks,3,2,2,0.7858
+Quantum networks,4,1,1,0.7413
+Quantum networks,7,3,3,0.8236
+Quantum networks,8,2,2,0.8080
+Quantum networks,9,1,1,0.8216
+Quantum networks,11,1,1,0.7688
+Quantum networks,12,2,2,0.7437
+Quantum networks,13,2,2,0.7884
+Quantum networks,14,2,2,0.7993
+Quantum networks,15,2,2,0.7520

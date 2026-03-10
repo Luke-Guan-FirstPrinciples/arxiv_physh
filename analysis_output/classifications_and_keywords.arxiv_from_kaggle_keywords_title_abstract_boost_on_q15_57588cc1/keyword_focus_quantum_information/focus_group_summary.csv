@@ -1,0 +1,11 @@
+group_label,exact_terms,regex_patterns,exact_keyword_occurrences,exact_paper_frequency,exact_paper_prevalence_pct,exact_avg_score,grouped_keyword_occurrences,grouped_paper_frequency,grouped_paper_prevalence_pct,grouped_matched_variant_count,grouped_avg_score,grouped_avg_base_score,grouped_avg_physics_boost,grouped_avg_rank
+Quantum computing,"[""quantum computing""]","[""quantum comput(ing|ation|ations|er|ers)""]",30,30,0.0786,0.7709,531,216,0.5663,266,0.7857,0.6618,0.1238,7.79
+Quantum communications,"[""quantum communications""]","[""quantum communication(s)?""]",1,1,0.0026,0.7176,131,57,0.1494,62,0.7835,0.6640,0.1195,6.53
+Quantum algorithms,"[""quantum algorithms""]","[""quantum algorithms?""]",28,28,0.0734,0.7742,137,54,0.1416,81,0.7822,0.6618,0.1204,6.09
+Quantum decoherence / noise,"[""quantum decoherence"", ""noise""]","[""quantum decoherence"", ""quantum noise"", ""noise quantum""]",8,8,0.021,0.7917,84,39,0.1022,51,0.7836,0.6650,0.1186,7.11
+Quantum error correction,"[""quantum error correction""]","[""quantum error correction""]",35,35,0.0918,0.8106,35,35,0.0918,1,0.8106,0.6763,0.1343,8.63
+Quantum cryptography,"[""quantum cryptography""]","[""quantum cryptograph(y|ic)""]",13,13,0.0341,0.7876,53,20,0.0524,36,0.8116,0.6776,0.1340,7.15
+Quantum networks,"[""quantum networks""]","[""quantum networks?""]",3,3,0.0079,0.7666,22,11,0.0288,20,0.7843,0.6534,0.1309,8.23
+Experimental QI,"[""experimental qi""]","[""experimental qi"", ""experimental quantum information"", ""quantum information experiments?"", ""experimental quantum (process|state|teleportation)""]",0,0,0.0,,7,7,0.0184,4,0.8300,0.6958,0.1343,8.29
+Quantum foundations,"[""quantum foundations""]","[""quantum foundations?"", ""foundations quantum( mechanics)?""]",1,1,0.0026,0.7468,11,6,0.0157,7,0.7601,0.6456,0.1145,9.18
+Quantum complexity theory,"[""quantum complexity theory""]","[""quantum complexity( theory)?""]",1,1,0.0026,0.7952,10,3,0.0079,8,0.7807,0.6407,0.1400,6.30

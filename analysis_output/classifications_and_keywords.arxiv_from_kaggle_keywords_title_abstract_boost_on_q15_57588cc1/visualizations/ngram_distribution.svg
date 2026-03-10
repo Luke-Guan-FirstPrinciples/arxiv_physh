@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="488" viewBox="0 0 1200 488">
+<rect x="0.00" y="0.00" width="1200.00" height="488.00" fill="#ffffff" rx="0.00" />
+<text x="24.00" y="34.00" fill="#111827" font-size="24" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="700">N-gram distribution</text>
+<text x="24.00" y="58.00" fill="#475569" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">Share of exploded keyword rows by n-gram length.</text>
+<line x1="290.00" y1="78.00" x2="290.00" y2="450.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
+<text x="290.00" y="468.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">0</text>
+<line x1="480.00" y1="78.00" x2="480.00" y2="450.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
+<text x="480.00" y="468.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">83.5K</text>
+<line x1="670.00" y1="78.00" x2="670.00" y2="450.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
+<text x="670.00" y="468.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">167.1K</text>
+<line x1="860.00" y1="78.00" x2="860.00" y2="450.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
+<text x="860.00" y="468.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">250.6K</text>
+<line x1="1050.00" y1="78.00" x2="1050.00" y2="450.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
+<text x="1050.00" y="468.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">334.1K</text>
+<line x1="290.00" y1="114.00" x2="1060.00" y2="114.00" stroke="#f1f5f9" stroke-width="1.0" />
+<text x="278.00" y="104.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">1-gram</text>
+<rect x="290.00" y="90.00" width="38.20" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="336.20" y="103.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">16,792 keywords | 3.22%</text>
+<line x1="290.00" y1="144.00" x2="1060.00" y2="144.00" stroke="#f1f5f9" stroke-width="1.0" />
+<text x="278.00" y="134.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">2-gram</text>
+<rect x="290.00" y="120.00" width="375.35" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="673.35" y="133.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">165,008 keywords | 31.60%</text>
+<line x1="290.00" y1="174.00" x2="1060.00" y2="174.00" stroke="#f1f5f9" stroke-width="1.0" />
+<text x="278.00" y="164.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">3-gram</text>
+<rect x="290.00" y="150.00" width="760.00" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="1058.00" y="163.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">334,107 keywords | 63.98%</text>
+<line x1="290.00" y1="204.00" x2="1060.00" y2="204.00" stroke="#f1f5f9" stroke-width="1.0" />
+<text x="278.00" y="194.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">4-gram</text>
+<rect x="290.00" y="180.00" width="12.03" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="310.03" y="193.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">5,288 keywords | 1.01%</text>
+<line x1="290.00" y1="234.00" x2="1060.00" y2="234.00" stroke="#f1f5f9" stroke-width="1.0" />
+<text x="278.00" y="224.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">5-gram</text>
+<rect x="290.00" y="210.00" width="1.81" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="299.81" y="223.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">796 keywords | 0.15%</text>
+<line x1="290.00" y1="264.00" x2="1060.00" y2="264.00" stroke="#f1f5f9" stroke-width="1.0" />
+<text x="278.00" y="254.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">6-gram</text>
+<rect x="290.00" y="240.00" width="0.48" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="298.48" y="253.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">209 keywords | 0.04%</text>
+<line x1="290.00" y1="294.00" x2="1060.00" y2="294.00" stroke="#f1f5f9" stroke-width="1.0" />
+<text x="278.00" y="284.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">7-gram</text>
+<rect x="290.00" y="270.00" width="0.05" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="298.05" y="283.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">23 keywords | 0.00%</text>
+<line x1="290.00" y1="324.00" x2="1060.00" y2="324.00" stroke="#f1f5f9" stroke-width="1.0" />
+<text x="278.00" y="314.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">8-gram</text>
+<rect x="290.00" y="300.00" width="0.02" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="298.02" y="313.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">10 keywords | 0.00%</text>
+<line x1="290.00" y1="354.00" x2="1060.00" y2="354.00" stroke="#f1f5f9" stroke-width="1.0" />
+<text x="278.00" y="344.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">9-gram</text>
+<rect x="290.00" y="330.00" width="0.00" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="298.00" y="343.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">2 keywords | 0.00%</text>
+<line x1="290.00" y1="384.00" x2="1060.00" y2="384.00" stroke="#f1f5f9" stroke-width="1.0" />
+<text x="278.00" y="374.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">10-gram</text>
+<rect x="290.00" y="360.00" width="0.00" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="298.00" y="373.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">2 keywords | 0.00%</text>
+<line x1="290.00" y1="414.00" x2="1060.00" y2="414.00" stroke="#f1f5f9" stroke-width="1.0" />
+<text x="278.00" y="404.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">11-gram</text>
+<rect x="290.00" y="390.00" width="0.00" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="298.00" y="403.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">1 keywords | 0.00%</text>
+<line x1="290.00" y1="444.00" x2="1060.00" y2="444.00" stroke="#f1f5f9" stroke-width="1.0" />
+<text x="278.00" y="434.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">13-gram</text>
+<rect x="290.00" y="420.00" width="0.00" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="298.00" y="433.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">2 keywords | 0.00%</text>
+</svg>

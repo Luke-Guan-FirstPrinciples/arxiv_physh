@@ -1,0 +1,20 @@
+{
+  "avg_base_score": "0.6682",
+  "avg_keyword_count": "15.0000",
+  "avg_physics_boost": "0.0812",
+  "avg_score": "0.7493",
+  "boost_bucket_width": 0.02,
+  "chart_top_n": 20,
+  "exploded_keyword_rows": 520320,
+  "max_keyword_count": 15,
+  "median_keyword_count": 15.0,
+  "min_keyword_count": 15,
+  "paper_count": 34688,
+  "papers_with_keywords": 34688,
+  "recorded_keyword_slots": 520320,
+  "score_bucket_width": 0.05,
+  "table_name": "classifications_and_keywords.arxiv_from_kaggle_keywords_title_abstract_boost_on_q15_57588cc1",
+  "top_n": 50,
+  "unique_keywords": 386541,
+  "zero_keyword_papers": 0
+}

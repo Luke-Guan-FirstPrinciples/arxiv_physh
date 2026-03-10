@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Keyword Distribution Dashboard</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f8fafc;
+      --panel: #ffffff;
+      --border: #dbe4ee;
+      --text: #0f172a;
+      --muted: #475569;
+      --accent: #2563eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px;
+      background: radial-gradient(circle at top left, #eff6ff 0, #f8fafc 36%, #f8fafc 100%);
+      color: var(--text);
+      font-family: Helvetica, Arial, sans-serif;
+    }
+    .wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .hero {
+      margin-bottom: 24px;
+      padding: 28px;
+      background: linear-gradient(135deg, #ffffff 0%, #eff6ff 100%);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      line-height: 1.1;
+    }
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .card, .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+    }
+    .card {
+      padding: 18px;
+    }
+    .card .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .card .value {
+      font-size: 28px;
+      font-weight: 700;
+    }
+    .panels {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+    .panel {
+      padding: 20px;
+    }
+    .panel h2 {
+      margin: 0 0 14px;
+      font-size: 20px;
+    }
+    .panel img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 14px;
+      border: 1px solid #eef2f7;
+      background: #fff;
+    }
+    .tables {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 18px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px 0;
+      border-bottom: 1px solid #e2e8f0;
+      text-align: left;
+      font-size: 14px;
+    }
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .files {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .files a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Keyword Distribution Dashboard</h1>
+      <p>Table: <code>classifications_and_keywords.arxiv_from_kaggle_keywords_title_abstract_boost_on_q15_57588cc1</code></p>
+    </section>
+    <section class="grid"><div class="card"><div class="label">Papers</div><div class="value">34,688</div></div><div class="card"><div class="label">Unique keywords</div><div class="value">386,541</div></div><div class="card"><div class="label">Keyword rows</div><div class="value">520,320</div></div><div class="card"><div class="label">Avg keywords / paper</div><div class="value">15.00</div></div><div class="card"><div class="label">Avg score</div><div class="value">0.7493</div></div><div class="card"><div class="label">Avg physics boost</div><div class="value">0.0812</div></div></section>
+    <section class="panels"><section class="panel"><h2>Top keywords by paper frequency</h2><img src="visualizations/top_keywords_by_paper_frequency.svg" alt="Top keywords by paper frequency" /></section><section class="panel"><h2>Top boosted keywords</h2><img src="visualizations/top_boosted_keywords.svg" alt="Top boosted keywords" /></section><section class="panel"><h2>N-gram distribution</h2><img src="visualizations/ngram_distribution.svg" alt="N-gram distribution" /></section><section class="panel"><h2>Keyword rank distribution</h2><img src="visualizations/keyword_rank_distribution.svg" alt="Keyword rank distribution" /></section><section class="panel"><h2>Score histogram</h2><img src="visualizations/score_histogram.svg" alt="Score histogram" /></section><section class="panel"><h2>Physics boost histogram</h2><img src="visualizations/physics_boost_histogram.svg" alt="Physics boost histogram" /></section><section class="panel"><h2>Keyword count distribution</h2><img src="visualizations/keyword_count_distribution.svg" alt="Keyword count distribution" /></section></section>
+    <section class="tables">
+      <div class="panel">
+        <h2>Top keywords</h2>
+        <table>
+          <thead>
+            <tr><th>Keyword</th><th>Papers</th><th>Prevalence</th><th>Avg score</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>quantum</td><td>1,179</td><td>3.399%</td><td>0.7135</td></tr><tr><td>dark matter</td><td>832</td><td>2.398%</td><td>0.8571</td></tr><tr><td>phase transition</td><td>670</td><td>1.931%</td><td>0.8370</td></tr><tr><td>magnetic field</td><td>559</td><td>1.611%</td><td>0.7289</td></tr><tr><td>ground state</td><td>524</td><td>1.511%</td><td>0.7439</td></tr><tr><td>fermion</td><td>410</td><td>1.182%</td><td>0.7345</td></tr><tr><td>gravity</td><td>365</td><td>1.052%</td><td>0.7196</td></tr><tr><td>dark energy</td><td>363</td><td>1.046%</td><td>0.7630</td></tr><tr><td>neutrino</td><td>330</td><td>0.951%</td><td>0.7302</td></tr><tr><td>gauge theory</td><td>328</td><td>0.946%</td><td>0.7918</td></tr><tr><td>phase transitions</td><td>324</td><td>0.934%</td><td>0.8672</td></tr><tr><td>renormalization group</td><td>321</td><td>0.925%</td><td>0.8612</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="panel">
+        <h2>Top boosted keywords</h2>
+        <table>
+          <thead>
+            <tr><th>Keyword</th><th>Papers</th><th>Avg boost</th><th>Avg score</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>dark matter neutrino</td><td>3</td><td>0.3600</td><td>1.0940</td></tr><tr><td>plasma phase transition</td><td>2</td><td>0.3600</td><td>1.1040</td></tr><tr><td>phase transition topological</td><td>2</td><td>0.3600</td><td>1.0382</td></tr><tr><td>fermionic dark matter</td><td>2</td><td>0.3600</td><td>1.0270</td></tr><tr><td>renormalization group quantum</td><td>2</td><td>0.3600</td><td>1.0230</td></tr><tr><td>holographic phase transitions</td><td>2</td><td>0.3600</td><td>1.0128</td></tr><tr><td>phase transition heisenberg</td><td>2</td><td>0.3600</td><td>0.9895</td></tr><tr><td>dark gauge fields</td><td>1</td><td>0.3600</td><td>1.0999</td></tr><tr><td>fermion dark matter</td><td>1</td><td>0.3600</td><td>1.0987</td></tr><tr><td>cosmology dark matter</td><td>1</td><td>0.3600</td><td>1.0706</td></tr><tr><td>phase transition lattice</td><td>1</td><td>0.3600</td><td>1.0547</td></tr><tr><td>renormalization gauge fields</td><td>1</td><td>0.3600</td><td>1.0542</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <div class="files">
+      Data files:
+      <a href="summary.json">summary.json</a>,
+      <a href="top_keywords.csv">top_keywords.csv</a>,
+      <a href="top_boosted_keywords.csv">top_boosted_keywords.csv</a>,
+      <a href="ngram_distribution.csv">ngram_distribution.csv</a>,
+      <a href="rank_distribution.csv">rank_distribution.csv</a>,
+      <a href="keyword_count_distribution.csv">keyword_count_distribution.csv</a>,
+      <a href="score_distribution.csv">score_distribution.csv</a>,
+      <a href="boost_distribution.csv">boost_distribution.csv</a>
+    </div>
+  </div>
+</body>
+</html>
