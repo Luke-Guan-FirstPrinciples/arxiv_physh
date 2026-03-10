@@ -5,51 +5,51 @@
 <line x1="290.00" y1="78.00" x2="290.00" y2="390.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
 <text x="290.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">0</text>
 <line x1="480.00" y1="78.00" x2="480.00" y2="390.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
-<text x="480.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">66.50</text>
+<text x="480.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">190.50</text>
 <line x1="670.00" y1="78.00" x2="670.00" y2="390.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
-<text x="670.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">133</text>
+<text x="670.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">381</text>
 <line x1="860.00" y1="78.00" x2="860.00" y2="390.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
-<text x="860.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">199.50</text>
+<text x="860.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">571.50</text>
 <line x1="1050.00" y1="78.00" x2="1050.00" y2="390.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
-<text x="1050.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">266</text>
+<text x="1050.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">762</text>
 <line x1="290.00" y1="114.00" x2="1060.00" y2="114.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="104.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum computing</text>
 <rect x="290.00" y="90.00" width="760.00" height="16.00" fill="#7c3aed" rx="4.00" />
-<text x="1058.00" y="103.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">266 variants</text>
+<text x="1058.00" y="103.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">762 variants</text>
 <line x1="290.00" y1="144.00" x2="1060.00" y2="144.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="134.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum communications</text>
-<rect x="290.00" y="120.00" width="177.14" height="16.00" fill="#7c3aed" rx="4.00" />
-<text x="475.14" y="133.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">62 variants</text>
+<rect x="290.00" y="120.00" width="182.52" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="480.52" y="133.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">183 variants</text>
 <line x1="290.00" y1="174.00" x2="1060.00" y2="174.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="164.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum algorithms</text>
-<rect x="290.00" y="150.00" width="231.43" height="16.00" fill="#7c3aed" rx="4.00" />
-<text x="529.43" y="163.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">81 variants</text>
+<rect x="290.00" y="150.00" width="246.35" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="544.35" y="163.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">247 variants</text>
 <line x1="290.00" y1="204.00" x2="1060.00" y2="204.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="194.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum decoherence / noise</text>
-<rect x="290.00" y="180.00" width="145.71" height="16.00" fill="#7c3aed" rx="4.00" />
-<text x="443.71" y="193.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">51 variants</text>
+<rect x="290.00" y="180.00" width="185.51" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="483.51" y="193.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">186 variants</text>
 <line x1="290.00" y1="234.00" x2="1060.00" y2="234.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="224.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum error correction</text>
-<rect x="290.00" y="210.00" width="2.86" height="16.00" fill="#7c3aed" rx="4.00" />
-<text x="300.86" y="223.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">1 variants</text>
+<rect x="290.00" y="210.00" width="1.00" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="299.00" y="223.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">1 variants</text>
 <line x1="290.00" y1="264.00" x2="1060.00" y2="264.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="254.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum cryptography</text>
-<rect x="290.00" y="240.00" width="102.86" height="16.00" fill="#7c3aed" rx="4.00" />
-<text x="400.86" y="253.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">36 variants</text>
+<rect x="290.00" y="240.00" width="100.73" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="398.73" y="253.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">101 variants</text>
 <line x1="290.00" y1="294.00" x2="1060.00" y2="294.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="284.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum networks</text>
-<rect x="290.00" y="270.00" width="57.14" height="16.00" fill="#7c3aed" rx="4.00" />
-<text x="355.14" y="283.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">20 variants</text>
+<rect x="290.00" y="270.00" width="83.78" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="381.78" y="283.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">84 variants</text>
 <line x1="290.00" y1="324.00" x2="1060.00" y2="324.00" stroke="#f1f5f9" stroke-width="1.0" />
-<text x="278.00" y="314.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Experimental QI</text>
-<rect x="290.00" y="300.00" width="11.43" height="16.00" fill="#7c3aed" rx="4.00" />
-<text x="309.43" y="313.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">4 variants</text>
+<text x="278.00" y="314.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum foundations</text>
+<rect x="290.00" y="300.00" width="24.93" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="322.93" y="313.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">25 variants</text>
 <line x1="290.00" y1="354.00" x2="1060.00" y2="354.00" stroke="#f1f5f9" stroke-width="1.0" />
-<text x="278.00" y="344.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum foundations</text>
-<rect x="290.00" y="330.00" width="20.00" height="16.00" fill="#7c3aed" rx="4.00" />
-<text x="318.00" y="343.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">7 variants</text>
+<text x="278.00" y="344.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Experimental QI</text>
+<rect x="290.00" y="330.00" width="5.98" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="303.98" y="343.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">6 variants</text>
 <line x1="290.00" y1="384.00" x2="1060.00" y2="384.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="374.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum complexity theory</text>
-<rect x="290.00" y="360.00" width="22.86" height="16.00" fill="#7c3aed" rx="4.00" />
-<text x="320.86" y="373.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">8 variants</text>
+<rect x="290.00" y="360.00" width="15.96" height="16.00" fill="#7c3aed" rx="4.00" />
+<text x="313.96" y="373.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">16 variants</text>
 </svg>

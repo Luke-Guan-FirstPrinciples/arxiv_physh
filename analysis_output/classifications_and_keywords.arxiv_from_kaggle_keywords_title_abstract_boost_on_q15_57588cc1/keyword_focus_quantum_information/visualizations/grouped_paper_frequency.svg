@@ -5,51 +5,51 @@
 <line x1="290.00" y1="78.00" x2="290.00" y2="390.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
 <text x="290.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">0</text>
 <line x1="480.00" y1="78.00" x2="480.00" y2="390.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
-<text x="480.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">54</text>
+<text x="480.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">188</text>
 <line x1="670.00" y1="78.00" x2="670.00" y2="390.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
-<text x="670.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">108</text>
+<text x="670.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">376</text>
 <line x1="860.00" y1="78.00" x2="860.00" y2="390.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
-<text x="860.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">162</text>
+<text x="860.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">564</text>
 <line x1="1050.00" y1="78.00" x2="1050.00" y2="390.00" stroke="#e2e8f0" stroke-width="1.0" stroke-dasharray="4 4" />
-<text x="1050.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">216</text>
+<text x="1050.00" y="408.00" fill="#64748b" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="middle" font-weight="400">752</text>
 <line x1="290.00" y1="114.00" x2="1060.00" y2="114.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="104.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum computing</text>
 <rect x="290.00" y="90.00" width="760.00" height="16.00" fill="#2563eb" rx="4.00" />
-<text x="1058.00" y="103.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">216 papers | 0.566%</text>
+<text x="1058.00" y="103.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">752 papers | 0.565%</text>
 <line x1="290.00" y1="144.00" x2="1060.00" y2="144.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="134.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum communications</text>
-<rect x="290.00" y="120.00" width="200.56" height="16.00" fill="#2563eb" rx="4.00" />
-<text x="498.56" y="133.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">57 papers | 0.149%</text>
+<rect x="290.00" y="120.00" width="211.22" height="16.00" fill="#2563eb" rx="4.00" />
+<text x="509.22" y="133.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">209 papers | 0.157%</text>
 <line x1="290.00" y1="174.00" x2="1060.00" y2="174.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="164.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum algorithms</text>
-<rect x="290.00" y="150.00" width="190.00" height="16.00" fill="#2563eb" rx="4.00" />
-<text x="488.00" y="163.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">54 papers | 0.142%</text>
+<rect x="290.00" y="150.00" width="185.96" height="16.00" fill="#2563eb" rx="4.00" />
+<text x="483.96" y="163.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">184 papers | 0.138%</text>
 <line x1="290.00" y1="204.00" x2="1060.00" y2="204.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="194.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum decoherence / noise</text>
-<rect x="290.00" y="180.00" width="137.22" height="16.00" fill="#2563eb" rx="4.00" />
-<text x="435.22" y="193.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">39 papers | 0.102%</text>
+<rect x="290.00" y="180.00" width="147.55" height="16.00" fill="#2563eb" rx="4.00" />
+<text x="445.55" y="193.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">146 papers | 0.110%</text>
 <line x1="290.00" y1="234.00" x2="1060.00" y2="234.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="224.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum error correction</text>
-<rect x="290.00" y="210.00" width="123.15" height="16.00" fill="#2563eb" rx="4.00" />
-<text x="421.15" y="223.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">35 papers | 0.092%</text>
+<rect x="290.00" y="210.00" width="93.99" height="16.00" fill="#2563eb" rx="4.00" />
+<text x="391.99" y="223.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">93 papers | 0.070%</text>
 <line x1="290.00" y1="264.00" x2="1060.00" y2="264.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="254.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum cryptography</text>
-<rect x="290.00" y="240.00" width="70.37" height="16.00" fill="#2563eb" rx="4.00" />
-<text x="368.37" y="253.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">20 papers | 0.052%</text>
+<rect x="290.00" y="240.00" width="85.90" height="16.00" fill="#2563eb" rx="4.00" />
+<text x="383.90" y="253.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">85 papers | 0.064%</text>
 <line x1="290.00" y1="294.00" x2="1060.00" y2="294.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="284.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum networks</text>
-<rect x="290.00" y="270.00" width="38.70" height="16.00" fill="#2563eb" rx="4.00" />
-<text x="336.70" y="283.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">11 papers | 0.029%</text>
+<rect x="290.00" y="270.00" width="60.64" height="16.00" fill="#2563eb" rx="4.00" />
+<text x="358.64" y="283.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">60 papers | 0.045%</text>
 <line x1="290.00" y1="324.00" x2="1060.00" y2="324.00" stroke="#f1f5f9" stroke-width="1.0" />
-<text x="278.00" y="314.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Experimental QI</text>
-<rect x="290.00" y="300.00" width="24.63" height="16.00" fill="#2563eb" rx="4.00" />
-<text x="322.63" y="313.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">7 papers | 0.018%</text>
+<text x="278.00" y="314.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum foundations</text>
+<rect x="290.00" y="300.00" width="26.28" height="16.00" fill="#2563eb" rx="4.00" />
+<text x="324.28" y="313.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">26 papers | 0.020%</text>
 <line x1="290.00" y1="354.00" x2="1060.00" y2="354.00" stroke="#f1f5f9" stroke-width="1.0" />
-<text x="278.00" y="344.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum foundations</text>
-<rect x="290.00" y="330.00" width="21.11" height="16.00" fill="#2563eb" rx="4.00" />
-<text x="319.11" y="343.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">6 papers | 0.016%</text>
+<text x="278.00" y="344.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Experimental QI</text>
+<rect x="290.00" y="330.00" width="14.15" height="16.00" fill="#2563eb" rx="4.00" />
+<text x="312.15" y="343.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">14 papers | 0.011%</text>
 <line x1="290.00" y1="384.00" x2="1060.00" y2="384.00" stroke="#f1f5f9" stroke-width="1.0" />
 <text x="278.00" y="374.00" fill="#111827" font-size="13" font-family="Helvetica, Arial, sans-serif" text-anchor="end" font-weight="400">Quantum complexity theory</text>
-<rect x="290.00" y="360.00" width="10.56" height="16.00" fill="#2563eb" rx="4.00" />
-<text x="308.56" y="373.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">3 papers | 0.008%</text>
+<rect x="290.00" y="360.00" width="10.11" height="16.00" fill="#2563eb" rx="4.00" />
+<text x="308.11" y="373.00" fill="#334155" font-size="12" font-family="Helvetica, Arial, sans-serif" text-anchor="start" font-weight="400">10 papers | 0.007%</text>
 </svg>

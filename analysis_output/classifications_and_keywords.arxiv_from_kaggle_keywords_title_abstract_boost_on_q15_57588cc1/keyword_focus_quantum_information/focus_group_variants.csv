@@ -1,111 +1,128 @@
 group_label,keyword,keyword_occurrences,paper_frequency,avg_score,avg_base_score,avg_physics_boost,avg_rank
-Experimental QI,quantum information experiments,4,4,0.8094,0.6994,0.1100,8.75
+Experimental QI,quantum information experiments,8,8,0.7829,0.6929,0.0900,8.75
+Experimental QI,experimental quantum teleportation,2,2,0.8655,0.7055,0.1600,8.50
+Experimental QI,experimental quantum information,1,1,0.8616,0.6816,0.1800,6.00
 Experimental QI,experimental quantum process,1,1,0.8531,0.6731,0.1800,8.00
 Experimental QI,experimental quantum state,1,1,0.8872,0.7072,0.1800,7.00
-Experimental QI,experimental quantum teleportation,1,1,0.8324,0.6924,0.1400,8.00
-Quantum algorithms,quantum algorithms,28,28,0.7742,0.6685,0.1057,2.86
-Quantum algorithms,quantum algorithm,21,21,0.7746,0.6574,0.1171,3.10
+Experimental QI,quantum information experimentally,1,1,0.8002,0.6602,0.1400,13.00
+Quantum algorithms,quantum algorithm,90,90,0.7701,0.6594,0.1107,2.83
+Quantum algorithms,quantum algorithms,87,87,0.7760,0.6654,0.1106,2.94
+Quantum algorithms,efficient quantum algorithm,12,12,0.7890,0.6557,0.1333,6.33
+Quantum algorithms,new quantum algorithms,9,9,0.7874,0.6741,0.1133,9.11
+Quantum algorithms,present quantum algorithm,8,8,0.7883,0.6733,0.1150,7.75
+Quantum algorithms,new quantum algorithm,5,5,0.7715,0.6715,0.1000,8.60
+Quantum algorithms,propose quantum algorithm,4,4,0.8001,0.6801,0.1200,7.25
 Quantum algorithms,quantum algorithm evaluating,4,4,0.8361,0.6861,0.1500,8.25
-Quantum algorithms,efficient quantum algorithm,3,3,0.7999,0.6465,0.1533,3.00
-Quantum algorithms,design quantum algorithms,2,2,0.7695,0.6695,0.1000,10.50
-Quantum algorithms,new quantum algorithms,2,2,0.7732,0.6732,0.1000,9.50
-Quantum algorithms,present quantum algorithm,2,2,0.7977,0.6777,0.1200,6.50
-Quantum algorithms,quantum algorithms evaluating,2,2,0.8114,0.6914,0.1200,6.50
-Quantum algorithms,adiabatic quantum algorithm,1,1,0.8611,0.6611,0.2000,6.00
-Quantum algorithms,based quantum algorithm,1,1,0.8687,0.6887,0.1800,5.00
-Quantum algorithms,quantum algorithm longest,1,1,0.9042,0.7242,0.1800,6.00
-Quantum algorithms,quantum algorithm pattern,1,1,0.8512,0.7112,0.1400,9.00
-Quantum algorithms,quantum algorithms symbolic,1,1,0.8762,0.6962,0.1800,8.00
-Quantum algorithms,query quantum algorithm,1,1,0.8558,0.6758,0.1800,4.00
-Quantum algorithms,simulation quantum algorithms,1,1,0.8611,0.6811,0.1800,9.00
-Quantum communications,quantum communication,54,54,0.7732,0.6651,0.1081,2.94
-Quantum communications,quantum communication complexity,5,5,0.7612,0.6212,0.1400,5.80
-Quantum communications,quantum communication protocols,5,5,0.7713,0.6873,0.0840,10.60
+Quantum algorithms,quantum algorithm factoring,4,4,0.8043,0.6943,0.1100,8.25
+Quantum algorithms,quantum algorithm solves,4,4,0.8007,0.7007,0.1000,6.25
+Quantum algorithms,quantum algorithms solve,4,4,0.7897,0.6597,0.1300,8.75
+Quantum algorithms,adiabatic quantum algorithm,3,3,0.9101,0.6968,0.2133,8.33
+Quantum algorithms,adiabatic quantum algorithms,3,3,0.8299,0.6566,0.1733,8.67
+Quantum algorithms,based quantum algorithm,3,3,0.8236,0.6702,0.1533,4.00
+Quantum algorithms,quantum algorithms using,3,3,0.8406,0.6873,0.1533,8.00
+Quantum communications,quantum communication,189,189,0.7667,0.6634,0.1034,3.38
+Quantum communications,quantum communication protocols,19,19,0.7867,0.6888,0.0979,9.58
+Quantum communications,distance quantum communication,16,16,0.7933,0.6908,0.1025,10.94
+Quantum communications,quantum communication complexity,11,11,0.7584,0.6147,0.1436,4.64
+Quantum communications,quantum communications,11,11,0.7517,0.6662,0.0855,3.45
+Quantum communications,quantum communication channel,5,5,0.8055,0.6895,0.1160,9.20
+Quantum communications,quantum communication computation,5,5,0.7626,0.6786,0.0840,12.60
+Quantum communications,quantum communication using,5,5,0.8184,0.6544,0.1640,8.40
+Quantum communications,quantum communication sep,4,4,0.7768,0.6368,0.1400,12.00
+Quantum communications,states quantum communication,4,4,0.8304,0.6804,0.1500,7.00
+Quantum communications,future quantum communication,3,3,0.7863,0.6729,0.1133,11.33
 Quantum communications,light quantum communication,3,3,0.8516,0.6716,0.1800,6.33
-Quantum communications,quantum communication sep,3,3,0.7735,0.6335,0.1400,11.67
-Quantum communications,quantum communication channel,2,2,0.8159,0.6959,0.1200,10.50
-Quantum communications,quantum communication computation,2,2,0.7657,0.6857,0.0800,13.00
-Quantum communications,quantum communication model,2,2,0.7741,0.6541,0.1200,6.00
-Quantum communications,states quantum communication,2,2,0.8151,0.6751,0.1400,7.00
-Quantum communications,avowable quantum communication,1,1,0.8841,0.7041,0.1800,6.00
-Quantum communications,optical quantum communication,1,1,0.8766,0.6966,0.1800,7.00
-Quantum communications,perfect quantum communication,1,1,0.8860,0.7060,0.1800,7.00
-Quantum communications,quantum communication channels,1,1,0.8776,0.6976,0.1800,7.00
-Quantum communications,quantum communication localization,1,1,0.8820,0.7020,0.1800,7.00
-Quantum communications,quantum communication metrology,1,1,0.8891,0.7091,0.1800,7.00
-Quantum complexity theory,quantum complexity,3,3,0.7787,0.6387,0.1400,1.67
+Quantum communications,quantum communication channels,3,3,0.8375,0.6842,0.1533,9.00
+Quantum communications,quantum communication metrology,3,3,0.8000,0.6867,0.1133,10.00
+Quantum communications,useful quantum communication,3,3,0.7875,0.6741,0.1133,11.33
+Quantum complexity theory,quantum complexity,9,9,0.7700,0.6567,0.1133,2.67
+Quantum complexity theory,quantum complexity theory,3,3,0.7877,0.6744,0.1133,9.67
+Quantum complexity theory,quantum complexity classes,2,2,0.8006,0.7006,0.1000,8.50
 Quantum complexity theory,bound quantum complexity,1,1,0.7549,0.6149,0.1400,10.00
+Quantum complexity theory,classical quantum complexity,1,1,0.7545,0.6545,0.1000,14.00
+Quantum complexity theory,consider quantum complexity,1,1,0.7877,0.6877,0.1000,11.00
+Quantum complexity theory,facts quantum complexity,1,1,0.7442,0.6842,0.0600,10.00
 Quantum complexity theory,follows quantum complexity,1,1,0.7951,0.6551,0.1400,9.00
 Quantum complexity theory,problems quantum complexity,1,1,0.7724,0.6324,0.1400,10.00
+Quantum complexity theory,properties quantum complexity,1,1,0.8240,0.6840,0.1400,11.00
 Quantum complexity theory,quantum complexity cost,1,1,0.7683,0.6283,0.1400,6.00
 Quantum complexity theory,quantum complexity extension,1,1,0.8239,0.6839,0.1400,7.00
+Quantum complexity theory,quantum complexity including,1,1,0.8290,0.6890,0.1400,10.00
 Quantum complexity theory,quantum complexity know,1,1,0.7612,0.6212,0.1400,8.00
-Quantum complexity theory,quantum complexity theory,1,1,0.7952,0.6552,0.1400,8.00
-Quantum computing,quantum computation,111,111,0.7744,0.6658,0.1086,3.72
-Quantum computing,quantum computing,30,30,0.7709,0.6496,0.1213,4.17
-Quantum computing,quantum computer,16,16,0.7438,0.6438,0.1000,5.56
-Quantum computing,based quantum computation,11,11,0.8071,0.6853,0.1218,8.36
-Quantum computing,quantum computations,9,9,0.7718,0.6629,0.1089,4.00
-Quantum computing,quantum computers,9,9,0.7806,0.6495,0.1311,3.33
-Quantum computing,tolerant quantum computation,9,9,0.7899,0.6676,0.1222,9.33
-Quantum computing,quantum computation sep,7,7,0.7909,0.6509,0.1400,10.43
-Quantum computing,way quantum computation,7,7,0.7992,0.6763,0.1229,10.14
-Quantum computing,adiabatic quantum computation,6,6,0.8804,0.6737,0.2067,7.00
-Quantum computing,universal quantum computation,6,6,0.8424,0.6890,0.1533,8.50
-Quantum computing,optical quantum computing,5,5,0.8461,0.6981,0.1480,7.20
-Quantum computing,quantum computing sep,5,5,0.7990,0.6590,0.1400,12.40
-Quantum computing,topological quantum computation,5,5,0.8692,0.6772,0.1920,7.60
-Quantum computing,scalable quantum computation,4,4,0.8515,0.7115,0.1400,10.25
-Quantum cryptography,quantum cryptography,13,13,0.7876,0.6569,0.1308,3.38
-Quantum cryptography,protocols quantum cryptography,2,2,0.7811,0.6611,0.1200,4.50
-Quantum cryptography,quantum cryptographic,2,2,0.7705,0.6705,0.1000,1.50
-Quantum cryptography,quantum cryptography protocol,2,2,0.8069,0.6669,0.1400,5.50
-Quantum cryptography,quantum cryptography protocols,2,2,0.8908,0.7108,0.1800,7.50
-Quantum cryptography,quantum cryptography sep,2,2,0.8269,0.6869,0.1400,9.00
-Quantum cryptography,efficient quantum cryptography,1,1,0.9109,0.7309,0.1800,7.00
-Quantum cryptography,entanglement quantum cryptography,1,1,0.8592,0.7192,0.1400,9.00
-Quantum cryptography,practical quantum cryptography,1,1,0.8904,0.7104,0.1800,7.00
-Quantum cryptography,quantum cryptographic protocol,1,1,0.8668,0.6868,0.1800,5.00
-Quantum cryptography,quantum cryptography bipartite,1,1,0.8638,0.6838,0.1800,8.00
-Quantum cryptography,quantum cryptography error,1,1,0.8480,0.6680,0.1800,7.00
-Quantum cryptography,simulate quantum cryptography,1,1,0.9409,0.8009,0.1400,7.00
-Quantum cryptography,simulation quantum cryptography,1,1,0.8660,0.6860,0.1800,9.00
-Quantum cryptography,using quantum cryptography,1,1,0.8542,0.7142,0.1400,12.00
-Quantum decoherence / noise,quantum noise,18,18,0.7721,0.6677,0.1044,2.72
-Quantum decoherence / noise,noise quantum,8,8,0.7464,0.6364,0.1100,6.25
-Quantum decoherence / noise,quantum decoherence,7,7,0.8025,0.6796,0.1229,4.29
-Quantum decoherence / noise,degree quantum decoherence,2,2,0.7686,0.6286,0.1400,14.00
+Quantum complexity theory,topics quantum complexity,1,1,0.8237,0.6837,0.1400,12.00
+Quantum computing,quantum computation,390,390,0.7756,0.6679,0.1077,3.61
+Quantum computing,quantum computing,124,124,0.7716,0.6613,0.1103,4.36
+Quantum computing,quantum computer,52,52,0.7630,0.6515,0.1115,4.90
+Quantum computing,based quantum computation,37,37,0.7833,0.6736,0.1097,7.73
+Quantum computing,quantum computations,32,32,0.7717,0.6642,0.1075,3.25
+Quantum computing,universal quantum computation,31,31,0.8145,0.6810,0.1335,8.94
+Quantum computing,tolerant quantum computation,26,26,0.7866,0.6696,0.1169,8.85
+Quantum computing,adiabatic quantum computation,24,24,0.8848,0.6798,0.2050,7.83
+Quantum computing,quantum computers,24,24,0.7695,0.6545,0.1150,4.04
+Quantum computing,topological quantum computation,24,24,0.8604,0.6721,0.1883,8.71
+Quantum computing,quantum computing sep,21,21,0.7976,0.6576,0.1400,11.76
+Quantum computing,quantum computation sep,20,20,0.7856,0.6456,0.1400,11.30
+Quantum computing,way quantum computation,14,14,0.7971,0.6743,0.1229,10.14
+Quantum computing,based quantum computing,13,13,0.7825,0.6764,0.1062,8.31
+Quantum computing,state quantum computation,12,12,0.8175,0.6775,0.1400,8.00
+Quantum cryptography,quantum cryptography,48,48,0.7792,0.6551,0.1242,3.23
+Quantum cryptography,quantum cryptographic,19,19,0.7439,0.6503,0.0937,4.21
+Quantum cryptography,quantum cryptography sep,17,17,0.8147,0.6747,0.1400,7.12
+Quantum cryptography,quantum cryptographic protocol,7,7,0.8332,0.6989,0.1343,7.57
+Quantum cryptography,quantum cryptographic protocols,7,7,0.7524,0.6753,0.0771,9.14
+Quantum cryptography,state quantum cryptography,5,5,0.8143,0.6823,0.1320,11.40
+Quantum cryptography,variable quantum cryptography,5,5,0.8307,0.6907,0.1400,8.00
+Quantum cryptography,quantum cryptography protocol,4,4,0.8029,0.6829,0.1200,6.00
+Quantum cryptography,based quantum cryptography,3,3,0.7831,0.6831,0.1000,8.67
+Quantum cryptography,protocols quantum cryptography,3,3,0.7650,0.6516,0.1133,7.33
+Quantum cryptography,quantum cryptography protocols,3,3,0.8950,0.7150,0.1800,8.67
+Quantum cryptography,quantum cryptography based,2,2,0.8169,0.6769,0.1400,9.00
+Quantum cryptography,quantum cryptography real,2,2,0.8210,0.6610,0.1600,8.00
+Quantum cryptography,quantum cryptography using,2,2,0.8371,0.6571,0.1800,5.50
+Quantum cryptography,used quantum cryptography,2,2,0.7848,0.6248,0.1600,12.00
+Quantum decoherence / noise,quantum noise,70,70,0.7794,0.6696,0.1097,2.84
+Quantum decoherence / noise,quantum decoherence,32,32,0.8003,0.6716,0.1288,3.19
+Quantum decoherence / noise,noise quantum,15,15,0.7411,0.6358,0.1053,4.67
+Quantum decoherence / noise,noise,11,11,0.7218,0.6818,0.0400,2.55
+Quantum decoherence / noise,effect quantum noise,3,3,0.7587,0.6320,0.1267,4.67
+Quantum decoherence / noise,quantum decoherence sep,3,3,0.8045,0.6645,0.1400,9.33
+Quantum decoherence / noise,quantum noise limited,3,3,0.7783,0.6649,0.1133,10.67
+Quantum decoherence / noise,quantum noise reduction,3,3,0.8315,0.6915,0.1400,9.00
+Quantum decoherence / noise,quantum noise sep,3,3,0.8060,0.6660,0.1400,10.33
+Quantum decoherence / noise,manifests quantum decoherence,2,2,0.8220,0.6820,0.1400,8.00
+Quantum decoherence / noise,measure quantum decoherence,2,2,0.7951,0.6751,0.1200,13.50
+Quantum decoherence / noise,mechanism quantum decoherence,2,2,0.8107,0.6907,0.1200,8.50
 Quantum decoherence / noise,quantum decoherence classical,2,2,0.8132,0.6332,0.1800,7.00
-Quantum decoherence / noise,quantum noise reduction,2,2,0.8317,0.7117,0.1200,11.00
-Quantum decoherence / noise,frictional quantum decoherence,1,1,0.8632,0.6832,0.1800,8.00
-Quantum decoherence / noise,holographic quantum noise,1,1,0.8681,0.7081,0.1600,8.00
-Quantum decoherence / noise,investigated quantum noise,1,1,0.8341,0.6941,0.1400,8.00
-Quantum decoherence / noise,light quantum noise,1,1,0.8850,0.7050,0.1800,8.00
-Quantum decoherence / noise,manifests quantum decoherence,1,1,0.8408,0.7008,0.1400,9.00
-Quantum decoherence / noise,noise quantum correlations,1,1,0.8786,0.6986,0.1800,7.00
-Quantum decoherence / noise,quantum decoherence reduction,1,1,0.8804,0.7004,0.1800,7.00
-Quantum decoherence / noise,quantum decoherence theory,1,1,0.9241,0.7441,0.1800,7.00
-Quantum decoherence / noise,thermal quantum noise,1,1,0.8480,0.6680,0.1800,6.00
-Quantum error correction,quantum error correction,35,35,0.8106,0.6763,0.1343,8.63
-Quantum foundations,foundations quantum mechanics,4,4,0.7673,0.6373,0.1300,10.50
-Quantum foundations,foundations quantum,2,2,0.7367,0.6367,0.1000,5.50
-Quantum foundations,foundations quantum representation,1,1,0.7329,0.6329,0.1000,11.00
-Quantum foundations,original foundations quantum,1,1,0.7512,0.6512,0.1000,15.00
-Quantum foundations,quantum foundations,1,1,0.7468,0.6468,0.1000,5.00
+Quantum decoherence / noise,quantum decoherence significant,2,2,0.8120,0.6720,0.1400,9.50
+Quantum decoherence / noise,quantum decoherence theory,2,2,0.8698,0.7098,0.1600,7.50
+Quantum error correction,quantum error correction,93,93,0.8039,0.6755,0.1284,8.57
+Quantum foundations,foundations quantum mechanics,10,10,0.7390,0.6430,0.0960,11.50
+Quantum foundations,quantum foundations,7,7,0.7735,0.6564,0.1171,4.00
+Quantum foundations,foundations quantum,5,5,0.7766,0.6606,0.1160,5.00
+Quantum foundations,foundations quantum theory,3,3,0.8142,0.6875,0.1267,10.00
+Quantum foundations,quantum foundations sep,3,3,0.8160,0.6760,0.1400,9.33
+Quantum foundations,quantum foundation,2,2,0.7686,0.6886,0.0800,7.50
+Quantum foundations,concerning foundations quantum,1,1,0.8120,0.7120,0.1000,10.00
+Quantum foundations,conditions quantum foundations,1,1,0.8571,0.6771,0.1800,7.00
+Quantum foundations,foundations quantum decoherence,1,1,0.8375,0.6575,0.1800,6.00
+Quantum foundations,metaphysics quantum foundations,1,1,0.8415,0.6615,0.1800,6.00
+Quantum foundations,needs quantum foundations,1,1,0.9506,0.7706,0.1800,9.00
+Quantum foundations,quantum foundations interpretations,1,1,0.8127,0.7127,0.1000,10.00
+Quantum foundations,quantum foundations randomness,1,1,0.8409,0.7009,0.1400,10.00
 Quantum foundations,quantum foundations representations,1,1,0.8175,0.6775,0.1400,7.00
-Quantum foundations,unsatisfactory foundations quantum,1,1,0.7706,0.6706,0.1000,10.00
-Quantum networks,quantum networks,3,3,0.7666,0.6266,0.1400,1.33
-Quantum networks,general quantum networks,1,1,0.8216,0.6816,0.1400,9.00
-Quantum networks,interferometer quantum networks,1,1,0.7963,0.6163,0.1800,7.00
-Quantum networks,perfect quantum network,1,1,0.8847,0.7047,0.1800,8.00
-Quantum networks,programmable quantum networks,1,1,0.8672,0.7272,0.1400,14.00
-Quantum networks,quantum network,1,1,0.7980,0.6580,0.1400,2.00
-Quantum networks,quantum network coding,1,1,0.9080,0.7280,0.1800,7.00
-Quantum networks,quantum network decoherence,1,1,0.7835,0.6835,0.1000,13.00
-Quantum networks,quantum network models,1,1,0.7592,0.6592,0.1000,15.00
-Quantum networks,quantum network work,1,1,0.7933,0.6933,0.1000,13.00
-Quantum networks,quantum networks methods,1,1,0.7666,0.6266,0.1400,7.00
-Quantum networks,quantum networks modelled,1,1,0.7868,0.6068,0.1800,3.00
-Quantum networks,quantum networks require,1,1,0.7688,0.6688,0.1000,11.00
-Quantum networks,scalable quantum networks,1,1,0.7610,0.6610,0.1000,12.00
-Quantum networks,state quantum networks,1,1,0.7848,0.6448,0.1400,3.00
+Quantum foundations,research foundations quantum,1,1,0.8491,0.7091,0.1400,13.00
+Quantum networks,quantum networks,20,20,0.7637,0.6317,0.1320,2.50
+Quantum networks,quantum network,10,10,0.7480,0.6200,0.1280,3.50
+Quantum networks,quantum networks sep,7,7,0.7695,0.6295,0.1400,10.00
+Quantum networks,entanglement quantum networks,3,3,0.8097,0.6564,0.1533,7.33
+Quantum networks,perfect quantum network,3,3,0.8472,0.6672,0.1800,7.33
+Quantum networks,quantum networking,3,3,0.7622,0.6355,0.1267,4.33
+Quantum networks,integrated quantum network,2,2,0.7611,0.6611,0.1000,13.50
+Quantum networks,linear quantum network,2,2,0.7534,0.6334,0.1200,8.50
+Quantum networks,noisy quantum networks,2,2,0.8367,0.6767,0.1600,6.00
+Quantum networks,quantum network coding,2,2,0.8794,0.6994,0.1800,6.50
+Quantum networks,quantum network models,2,2,0.7918,0.6718,0.1200,9.50
+Quantum networks,quantum networking protocols,2,2,0.7631,0.6431,0.1200,12.50
+Quantum networks,quantum networks modeled,2,2,0.7502,0.6302,0.1200,6.50
+Quantum networks,sep quantum networks,2,2,0.7657,0.6257,0.1400,5.50
+Quantum networks,multipartite quantum networking,1,1,0.9014,0.7214,0.1800,8.00
